@@ -247,7 +247,7 @@ export const GraficoCerealEntregado = () => {
             >
                 {items.map((item) => (
                     <TabPane key={item.key} tab={item.label}>
-                        {item.children}
+                        {/* {item.children} */}
                     </TabPane>
                 ))}
             </Tabs>
