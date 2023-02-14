@@ -1,8 +1,18 @@
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CartesianGrid, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, ComposedChart, Line, Bar } from 'recharts';
+import { GlobalContext } from '../../context/GlobalContext';
 import './graficoCerealEntregado.css'
+
+
+// [SCORING]
+const TIPO = "nosis";
+
+// [ANALISIS_CEREAL]
+const TRIGO = 1;
+const MAIZ = 2;
+const SOJA = 5;
 
 const items = [
     {
@@ -34,6 +44,33 @@ const items = [
 ];
 
 export const GraficoCerealEntregado = () => {
+
+    const { infoEvo, setInfoEvo } = useContext(GlobalContext);
+
+
+    //*Llama y trae los datos de la consulta php
+
+    function InfoGrafEvol(idCliente) {
+        const data = new FormData();
+        data.append("idC", idCliente);
+        // fetch("../com_graEvolucionData.php", {
+        fetch("../gra_analisis.php", {
+            method: "POST",
+            body: data,
+        }).then(function (response) {
+            response.text().then((resp) => {
+                const data = resp;
+                var objetoData = JSON.parse(data);
+                setInfoEvo(objetoData);
+            });
+        });
+    }
+
+    // useEffect(() => {
+    //     if (idCliente) {
+    //       InfoGrafEvol(idCliente);
+    //     }
+    //   }, [idCliente]);
 
     const [activeKey, setActiveKey] = useState(items[0].key);
 
@@ -229,7 +266,10 @@ export const GraficoCerealEntregado = () => {
 
 
 
-
+    const handleOnChange = (key) => {
+        console.log(infoEvo);
+        setActiveKey(key);
+    };
 
     return (
         <div className='divContainerPestañas'>
@@ -240,9 +280,9 @@ export const GraficoCerealEntregado = () => {
             onChange={onChange}
         /> */}
 
-            <Tabs 
+            <Tabs
                 className='tabs-custom'
-                activeKey={activeKey} 
+                activeKey={activeKey}
                 onChange={setActiveKey}
             >
                 {items.map((item) => (

@@ -5,6 +5,15 @@ import { Area, Bar, CartesianGrid, ComposedChart, Legend, Line, LineChart, Respo
 import './analisisInsumosComprados.css'
 
 
+// [SCORING]
+const TIPO = "nosis";
+
+// [ANALISIS_INSUMOS]
+const AGROQUIMICOS = " (1, 7, 8, 9)";
+const FERTILIZANTES = " (0)";
+const SEMILLAS = " (2, 3, 5, 6)";
+
+
 export const AnalisisInsumosComprados = () => {
 
     const onChange = (key) => {

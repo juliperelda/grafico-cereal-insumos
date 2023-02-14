@@ -4,8 +4,13 @@ import { GlobalContext } from "./context/GlobalContext";
 import { Analisis } from './components/Analisis/Analisis';
 
 function App() {
+  const [infoEvo, setInfoEvo]=useState({});
+
+
   return (
-    <GlobalContext.Provider value={{}}>
+    <GlobalContext.Provider value={{
+      infoEvo, setInfoEvo,
+    }}>
 
       <Analisis />
 
