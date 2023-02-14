@@ -35,211 +35,229 @@ const items = [
 
 export const GraficoCerealEntregado = () => {
 
+    const [activeKey, setActiveKey] = useState(items[0].key);
 
-    const onChange = (key) => {
-        console.log(key);
-    };
-    const items = [
-        {
-            key: '1',
-            label: `TOTAL`,
-            children: `TOTAL 1`,
-        },
-        {
-            key: '2',
-            label: `AGROQUIMICOS`,
-            children: `AGROQUIMICOS 2`,
-        },
-        {
-            key: '3',
-            label: `SEMILLAS`,
-            children: `SEMILLAS 3`,
-        },
-        {
-            key: '4',
-            label: `FERTILIZANTES`,
-            children: `FERTILIZANTES 4`,
-        },
-    ];
 
     const dataTotal = [
         {
             name: 'Page A',
-            'Compra U$S': 90,
-            'Estimado U$S': 80,
+            'TT Entregadas': 90,
+            'TT Encuesta': 80,
         },
         {
             name: 'Page B',
-            'Compra U$S': 68,
-            'Estimado U$S': 67,
+            'TT Entregadas': 68,
+            'TT Encuesta': 67,
         },
         {
             name: 'Page C',
-            'Compra U$S': 97,
-            'Estimado U$S': 98,
+            'TT Entregadas': 97,
+            'TT Encuesta': 98,
         },
         {
             name: 'Page D',
-            'Compra U$S': 14,
-            'Estimado U$S': 12,
+            'TT Entregadas': 14,
+            'TT Encuesta': 12,
         },
         {
             name: 'Page E',
-            'Compra U$S': 15,
-            'Estimado U$S': 11,
+            'TT Entregadas': 15,
+            'TT Encuesta': 11,
         },
         {
             name: 'Page F',
-            'Compra U$S': 40,
-            'Estimado U$S': 68,
+            'TT Entregadas': 40,
+            'TT Encuesta': 68,
         },
     ];
 
     const dataSoja = [
         {
             name: 'Page A',
-            'Compra U$S': 50,
-            'Estimado U$S': 80,
+            'TT Entregadas': 50,
+            'TT Encuesta': 80,
         },
         {
             name: 'Page B',
-            'Compra U$S': 86,
-            'Estimado U$S': 96,
+            'TT Entregadas': 86,
+            'TT Encuesta': 96,
         },
         {
             name: 'Page C',
-            'Compra U$S': 37,
-            'Estimado U$S': 18,
+            'TT Entregadas': 37,
+            'TT Encuesta': 18,
         },
         {
             name: 'Page D',
-            'Compra U$S': 14,
-            'Estimado U$S': 12,
+            'TT Entregadas': 14,
+            'TT Encuesta': 12,
         },
         {
             name: 'Page E',
-            'Compra U$S': 52,
-            'Estimado U$S': 18,
+            'TT Entregadas': 52,
+            'TT Encuesta': 18,
         },
         {
             name: 'Page F',
-            'Compra U$S': 14,
-            'Estimado U$S': 68,
+            'TT Entregadas': 14,
+            'TT Encuesta': 68,
         },
     ]
 
     const dataMaiz = [
         {
             name: 'Page A',
-            'Compra U$S': 50,
-            'Estimado U$S': 80,
+            'TT Entregadas': 50,
+            'TT Encuesta': 80,
         },
         {
             name: 'Page B',
-            'Compra U$S': 86,
-            'Estimado U$S': 96,
+            'TT Entregadas': 86,
+            'TT Encuesta': 96,
         },
         {
             name: 'Page C',
-            'Compra U$S': 85,
-            'Estimado U$S': 100,
+            'TT Entregadas': 85,
+            'TT Encuesta': 100,
         },
         {
             name: 'Page D',
-            'Compra U$S': 10,
-            'Estimado U$S': 12,
+            'TT Entregadas': 10,
+            'TT Encuesta': 12,
         },
         {
             name: 'Page E',
-            'Compra U$S': 92,
-            'Estimado U$S': 58,
+            'TT Entregadas': 92,
+            'TT Encuesta': 58,
         },
         {
             name: 'Page F',
-            'Compra U$S': 35,
-            'Estimado U$S': 40,
+            'TT Entregadas': 35,
+            'TT Encuesta': 40,
         },
     ]
 
     const dataTrigo = [
         {
             name: 'Page A',
-            'Compra U$S': 52,
-            'Estimado U$S': 64,
+            'TT Entregadas': 52,
+            'TT Encuesta': 64,
         },
         {
             name: 'Page B',
-            'Compra U$S': 16,
-            'Estimado U$S': 74,
+            'TT Entregadas': 16,
+            'TT Encuesta': 74,
         },
         {
             name: 'Page C',
-            'Compra U$S': 36,
-            'Estimado U$S': 100,
+            'TT Entregadas': 36,
+            'TT Encuesta': 100,
         },
         {
             name: 'Page D',
-            'Compra U$S': 15,
-            'Estimado U$S': 46,
+            'TT Entregadas': 15,
+            'TT Encuesta': 46,
         },
         {
             name: 'Page E',
-            'Compra U$S': 14,
-            'Estimado U$S': 23,
+            'TT Entregadas': 14,
+            'TT Encuesta': 23,
         },
         {
             name: 'Page F',
-            'Compra U$S': 62,
-            'Estimado U$S': 15,
+            'TT Entregadas': 62,
+            'TT Encuesta': 15,
         },
     ]
 
     const dataOtrosGranos = [
         {
             name: 'Page A',
-            'Compra U$S': 20,
-            'Estimado U$S': 30,
+            'TT Entregadas': 20,
+            'TT Encuesta': 30,
         },
         {
             name: 'Page B',
-            'Compra U$S': 56,
-            'Estimado U$S': 36,
+            'TT Entregadas': 56,
+            'TT Encuesta': 36,
         },
         {
             name: 'Page C',
-            'Compra U$S': 15,
-            'Estimado U$S': 40,
+            'TT Entregadas': 15,
+            'TT Encuesta': 40,
         },
         {
             name: 'Page D',
-            'Compra U$S': 50,
-            'Estimado U$S': 77,
+            'TT Entregadas': 50,
+            'TT Encuesta': 77,
         },
         {
             name: 'Page E',
-            'Compra U$S': 22,
-            'Estimado U$S': 18,
+            'TT Entregadas': 22,
+            'TT Encuesta': 18,
         },
         {
             name: 'Page F',
-            'Compra U$S': 45,
-            'Estimado U$S': 60,
+            'TT Entregadas': 45,
+            'TT Encuesta': 60,
         }
     ]
 
+
+    let data;
+    switch (activeKey) {
+        case '1':
+            data = dataTotal;
+            break;
+        case '2':
+            data = dataSoja;
+            break;
+        case '3':
+            data = dataTrigo;
+            break;
+        case '4':
+            data = dataMaiz;
+            break;
+        case '5':
+            data = dataOtrosGranos;
+            break;
+        default:
+            data = dataTotal;
+            break;
+    }
+
+
+
+
+
+
     return (
         <div className='divContainerPestañas'>
-            <Tabs
+            {/* <Tabs
+            className='tabs-custom'
+            defaultActiveKey="1"
+            items={items}
+            onChange={onChange}
+        /> */}
+
+            <Tabs 
                 className='tabs-custom'
-                defaultActiveKey="1"
-                items={items}
-                onChange={onChange}
-            />
+                activeKey={activeKey} 
+                onChange={setActiveKey}
+            >
+                {items.map((item) => (
+                    <TabPane key={item.key} tab={item.label}>
+                        {item.children}
+                    </TabPane>
+                ))}
+            </Tabs>
+
+
             <ResponsiveContainer>
                 <ComposedChart
                     width={500}
                     height={400}
-                    data={dataTotal}
+                    data={data}
                     margin={{
                         top: 20,
                         right: 20,
@@ -252,8 +270,8 @@ export const GraficoCerealEntregado = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey='Compra U$S' barSize={20} fill="#8fd14a" legendType='circle' />
-                    <Line type="monotone" dataKey='Estimado U$S' stroke="#00b33b" />
+                    <Bar dataKey='TT Entregadas' barSize={20} fill="#8fd14a" legendType='circle' />
+                    <Line type="monotone" dataKey='TT Encuesta' stroke="#00b33b" />
                 </ComposedChart>
             </ResponsiveContainer>
         </div>
