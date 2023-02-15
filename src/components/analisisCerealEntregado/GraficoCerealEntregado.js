@@ -45,8 +45,14 @@ const items = [
 
 export const GraficoCerealEntregado = () => {
 
-    const { infoEvo, setInfoEvo } = useContext(GlobalContext);
+    const {
+        infoEvo,
+        setInfoEvo,
+        idCliente, //Probando
+        setIdCliente,
+    } = useContext(GlobalContext);
 
+    const [activeKey, setActiveKey] = useState(items[0].key);
 
     //*Llama y trae los datos de la consulta php
 
@@ -64,15 +70,19 @@ export const GraficoCerealEntregado = () => {
                 setInfoEvo(objetoData);
             });
         });
+        console.log(infoEvo)
     }
 
-    // useEffect(() => {
-    //     if (idCliente) {
-    //       InfoGrafEvol(idCliente);
-    //     }
-    //   }, [idCliente]);
+    useEffect(() => {
+        if (idCliente) {
+          InfoGrafEvol(idCliente);
+        }
+      }, [idCliente, infoEvo]);
+      
+      useEffect(() => {
+        console.log(infoEvo);
+      }, [infoEvo]);
 
-    const [activeKey, setActiveKey] = useState(items[0].key);
 
 
     const dataTotal = [
