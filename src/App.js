@@ -15,8 +15,8 @@ function App() {
       infoEvo, setInfoEvo,
       idCliente, setIdCliente, //Probando
     }}>
-
-      <Analisis />
+      <p>HOLA BRODERRRRR</p>
+      {/* <Analisis /> */}
 
     </GlobalContext.Provider>
   );
