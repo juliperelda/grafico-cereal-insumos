@@ -306,7 +306,7 @@ export const GraficoCerealEntregado = () => {
             <ResponsiveContainer>
                 <ComposedChart
                     width={500}
-                    height={400}
+                    height={200}
                     data={data}
                     margin={{
                         top: 20,
