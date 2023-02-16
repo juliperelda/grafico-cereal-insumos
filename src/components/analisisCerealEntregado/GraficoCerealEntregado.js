@@ -59,7 +59,6 @@ export const GraficoCerealEntregado = () => {
     function InfoGrafEvol(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../com_graEvolucionData.php", {
         fetch("../gra_analisis.php", {
             method: "POST",
             body: data,
@@ -76,11 +75,10 @@ export const GraficoCerealEntregado = () => {
     }
 
     useEffect(() => {
-        if (idCliente) {
-            InfoGrafEvol(idCliente);
-            console.log("infoEvo2: ", infoEvo);
-        }
-    }, [idCliente, infoEvo]);
+        // Llama a la función InfoGrafEvol cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoGrafEvol(idCliente);
+        console.log("infoEvo2: ", infoEvo);
+    }, [idCliente]);
 
     useEffect(() => {
         console.log("infoEvo3: ", infoEvo);
