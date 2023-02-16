@@ -318,7 +318,7 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={200}
-                        data={data}
+                        // data={data}
                         margin={{
                             top: 20,
                             right: 20,
@@ -331,8 +331,10 @@ export const GraficoCerealEntregado = () => {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey='TT Entregadas' barSize={20} fill="#8fd14a" legendType='circle' />
-                        <Line type="monotone" dataKey='TT Encuesta' stroke="#00b33b" />
+
+                        {/* Se agregaron los data para probar */}
+                        <Bar dataKey='TT Entregadas' data={infoEvo.kil} barSize={20} fill="#8fd14a" legendType='circle' /> 
+                        <Line type="monotone" dataKey='TT Encuesta' data={infoEvo.tt_est} stroke="#00b33b" />
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>
