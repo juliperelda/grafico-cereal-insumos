@@ -73,7 +73,7 @@ export const GraficoCerealEntregado = () => {
                 const data = resp.substring(resp.indexOf('['));
                 console.log("data: ", data);
 
-                console.log("JSON.text(data): ", JSON.text(data));
+                // console.log("JSON.text(data): ", JSON.text(data));
                 console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoEvo(objetoData);
