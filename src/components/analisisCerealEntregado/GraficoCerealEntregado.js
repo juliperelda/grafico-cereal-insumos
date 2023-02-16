@@ -283,7 +283,7 @@ export const GraficoCerealEntregado = () => {
 
     return (
         <>
-            {/* <div className='divContainerPestañas'> */}
+            <div className='divContainerPestañas'>
                 <Tabs
                     className='tabs-custom'
                     activeKey={activeKey}
@@ -318,7 +318,7 @@ export const GraficoCerealEntregado = () => {
                         <Line type="monotone" dataKey='TT Encuesta' stroke="#00b33b" />
                     </ComposedChart>
                 </ResponsiveContainer>
-            {/* </div> */}
+            </div>
         </>
     )
 }
