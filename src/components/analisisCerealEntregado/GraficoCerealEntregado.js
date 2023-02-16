@@ -67,25 +67,18 @@ export const GraficoCerealEntregado = () => {
         }).then(function (response) {
             console.log("response: ", response);
             response.text().then((resp) => {
-                try {
-                    console.log("resp: ", resp);
-                    console.log("data: ", data);
-                    const data = JSON.parse(resp);
-                    console.log("JSON.parse(data): ", JSON.parse(data));
-                    setInfoEvo(data);
-                    console.log("infoEvo: ", infoEvo)
-                } catch (error) {
-                    console.error("Error al analizar datos JSON: ", error);
-                }
-            });
-                // const data = resp;
                 
-                // var objetoData = JSON.parse(data);
-                // setInfoEvo(objetoData);
-                // console.log("objetoData: ", objetoData)
-                // console.log("data: ", data)
-                // console.log("infoEvo: ", infoEvo)
-            // });
+                console.log("resp: ", resp);
+                const data = resp;
+                console.log("data: ", data);
+                console.log("JSON.parse(data): ", JSON.parse(data));
+                console.log("JSON.text(data): ", JSON.text(data));
+                var objetoData = JSON.parse(data);
+                setInfoEvo(objetoData);
+                console.log("objetoData: ", objetoData)
+                console.log("data: ", data)
+                console.log("infoEvo: ", infoEvo)
+            });
         });
         console.log("infoEvo: ", infoEvo)
     }
