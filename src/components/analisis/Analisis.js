@@ -11,10 +11,10 @@ export const Analisis = () => {
                     <h1 className="titulos">ANALISIS CEREAL ENTREGADO</h1>
                     <GraficoCerealEntregado />
                 </Card>
-                {/* <Card className="cardGraficoInsumosComprados" style={{ width: "100%" }}>
+                <Card className="cardGraficoInsumosComprados" style={{ width: "100%", height: "200px" }}>
                     <h1 className="titulos">ANALISIS INSUMOS COMPRADOS</h1>
                     <AnalisisInsumosComprados />
-                </Card> */}
+                </Card>
             </div>
         </>
     )
