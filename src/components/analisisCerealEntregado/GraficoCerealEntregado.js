@@ -75,13 +75,13 @@ export const GraficoCerealEntregado = () => {
 
     useEffect(() => {
         if (idCliente) {
-          InfoGrafEvol(idCliente);
+            InfoGrafEvol(idCliente);
         }
-      }, [idCliente, infoEvo]);
-      
-      useEffect(() => {
+    }, [idCliente, infoEvo]);
+
+    useEffect(() => {
         console.log(infoEvo);
-      }, [infoEvo]);
+    }, [infoEvo]);
 
 
 
@@ -282,48 +282,43 @@ export const GraficoCerealEntregado = () => {
     };
 
     return (
-        <div className='divContainerPestañas'>
-            {/* <Tabs
-            className='tabs-custom'
-            defaultActiveKey="1"
-            items={items}
-            onChange={onChange}
-        /> */}
-
-            <Tabs
-                className='tabs-custom'
-                activeKey={activeKey}
-                onChange={setActiveKey}
-            >
-                {items.map((item) => (
-                    <TabPane key={item.key} tab={item.label}>
-                        {/* {item.children} */}
-                    </TabPane>
-                ))}
-            </Tabs>
-
-
-            <ResponsiveContainer>
-                <ComposedChart
-                    width={500}
-                    height={200}
-                    data={data}
-                    margin={{
-                        top: 20,
-                        right: 20,
-                        bottom: 20,
-                        left: 20,
-                    }}
+        <>
+            {/* <div className='divContainerPestañas'> */}
+                <Tabs
+                    className='tabs-custom'
+                    activeKey={activeKey}
+                    onChange={setActiveKey}
                 >
-                    <CartesianGrid vertical={false} horizontal={true} />
-                    <XAxis dataKey="name" scale="band" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey='TT Entregadas' barSize={20} fill="#8fd14a" legendType='circle' />
-                    <Line type="monotone" dataKey='TT Encuesta' stroke="#00b33b" />
-                </ComposedChart>
-            </ResponsiveContainer>
-        </div>
+                    {items.map((item) => (
+                        <TabPane key={item.key} tab={item.label}>
+                            {/* {item.children} */}
+                        </TabPane>
+                    ))}
+                </Tabs>
+
+
+                <ResponsiveContainer>
+                    <ComposedChart
+                        width={500}
+                        height={200}
+                        data={data}
+                        margin={{
+                            top: 20,
+                            right: 20,
+                            bottom: 20,
+                            left: 20,
+                        }}
+                    >
+                        <CartesianGrid vertical={false} horizontal={true} />
+                        <XAxis dataKey="name" scale="band" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey='TT Entregadas' barSize={20} fill="#8fd14a" legendType='circle' />
+                        <Line type="monotone" dataKey='TT Encuesta' stroke="#00b33b" />
+                    </ComposedChart>
+                </ResponsiveContainer>
+            {/* </div> */}
+        </>
     )
 }

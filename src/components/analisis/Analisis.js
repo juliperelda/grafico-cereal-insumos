@@ -7,7 +7,7 @@ export const Analisis = () => {
     return (
         <>
             <div className="divContainer">
-                <Card className="cardGraficoCerealEntregado" style={{ width: "50%" }}>
+                <Card className="cardGraficoCerealEntregado" style={{ width: "50%", height: "700px" }}>
                     <h1 className="titulos">ANALISIS CEREAL ENTREGADO</h1>
                     <GraficoCerealEntregado />
                 </Card>

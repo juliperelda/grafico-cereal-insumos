@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useState } from 'react'
 import { GlobalContext } from "./context/GlobalContext";
-import { Analisis } from './components/Analisis/Analisis';
+import { Analisis } from './components/analisis/Analisis';
 
 function App() {
   const [infoEvo, setInfoEvo]=useState({});
