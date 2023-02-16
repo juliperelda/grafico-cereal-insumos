@@ -65,7 +65,9 @@ export const GraficoCerealEntregado = () => {
             method: "POST",
             body: data,
         }).then(function (response) {
+            console.log("response: ", response);
             response.text().then((resp) => {
+                console.log("resp: ", resp);
                 const data = resp;
                 var objetoData = JSON.parse(data);
                 setInfoEvo(objetoData);
