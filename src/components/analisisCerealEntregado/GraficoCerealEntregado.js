@@ -87,6 +87,11 @@ export const GraficoCerealEntregado = () => {
     }, []);
 
 
+    useEffect(() => {
+        console.log("infoEvo actualizado: ", infoEvo);
+      }, [infoEvo]);
+      
+
     const dataTotal = [
         {
             name: 'Page A',
