@@ -59,8 +59,8 @@ export const GraficoCerealEntregado = () => {
     function InfoGrafEvol(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../com_graEvolucionData.php", {
-        fetch("../gra_analisis.php", {
+        fetch("../com_graEvolucionData.php", {
+        // fetch("../gra_analisis.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -68,6 +68,7 @@ export const GraficoCerealEntregado = () => {
                 const data = resp;
                 var objetoData = JSON.parse(data);
                 setInfoEvo(objetoData);
+                console.log(objetoData)
             });
         });
         console.log(infoEvo)
