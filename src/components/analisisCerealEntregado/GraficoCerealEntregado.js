@@ -56,6 +56,36 @@ export const GraficoCerealEntregado = () => {
 
     //*Llama y trae los datos de la consulta php
 
+    // function InfoGrafEvol(idCliente) {
+    //     const data = new FormData();
+    //     data.append("idC", idCliente);
+    //     // fetch("../com_graEvolucionData.php", {
+    //     fetch("../gra_analisis.php", {
+    //         method: "POST",
+    //         body: data,
+    //     }).then(function (response) {
+    //         response.text().then((resp) => {
+    //             const data = resp;
+    //             var objetoData = JSON.parse(data);
+    //             setInfoEvo(objetoData);
+    //             console.log("objetoData: ", objetoData)
+    //             console.log("data: ", data)
+    //         });
+    //     });
+    //     console.log("infoEvo: ", infoEvo)
+    // }
+
+    // useEffect(() => {
+    //     if (idCliente) {
+    //         InfoGrafEvol(idCliente);
+    //         console.log("infoEvo2: ", infoEvo);
+    //     }
+    // }, [idCliente, infoEvo]);
+
+    // useEffect(() => {
+    //     console.log("infoEvo3: ", infoEvo);
+    // }, []);
+
     function InfoGrafEvol(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
@@ -70,21 +100,21 @@ export const GraficoCerealEntregado = () => {
                 setInfoEvo(objetoData);
                 console.log("objetoData: ", objetoData)
                 console.log("data: ", data)
+                console.log("infoEvo: ", infoEvo)
             });
         });
-        console.log("infoEvo: ", infoEvo)
     }
-
+    
     useEffect(() => {
         if (idCliente) {
             InfoGrafEvol(idCliente);
-            console.log("infoEvo2: ", infoEvo);
         }
-    }, [idCliente, infoEvo]);
-
+    }, [idCliente]);
+    
     useEffect(() => {
         console.log("infoEvo3: ", infoEvo);
-    }, []);
+    }, [infoEvo]);
+    
 
 
 
