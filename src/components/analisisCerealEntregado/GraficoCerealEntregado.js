@@ -112,6 +112,11 @@ export const GraficoCerealEntregado = () => {
           });
         }
       }, [idCliente]);
+
+      useEffect(() => {
+        console.log("infoEvo2: ", infoEvo);
+      }, [infoEvo]);
+      
       
     
 
