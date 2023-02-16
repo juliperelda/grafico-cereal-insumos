@@ -56,11 +56,11 @@ export const GraficoCerealEntregado = () => {
 
     //*Llama y trae los datos de la consulta php
 
-    function InfoGrafEvol() {
-        // const data = new FormData();
-        // data.append("idC", idCliente);
-        // fetch("../com_graEvolucionData.php", {
-        fetch("../gra_analisis.php", {
+    function InfoGrafEvol(idCliente) {
+        const data = new FormData();
+        data.append("idC", idCliente);
+        fetch("../com_graEvolucionData.php", {
+        // fetch("../gra_analisis.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
