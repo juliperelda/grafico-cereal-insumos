@@ -57,6 +57,7 @@ export const GraficoCerealEntregado = () => {
     //*Llama y trae los datos de la consulta php
 
     function InfoGrafEvol(idCliente) {
+        console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         // fetch("../com_graEvolucionData.php", {
@@ -77,6 +78,7 @@ export const GraficoCerealEntregado = () => {
     }
 
     useEffect(() => {
+        console.log("idCliente: ", idCliente)
         // Llama a la función InfoGrafEvol cuando el componente se monta y cuando el ID del cliente cambia.
         InfoGrafEvol(idCliente);
         console.log("infoEvo2: ", infoEvo);
