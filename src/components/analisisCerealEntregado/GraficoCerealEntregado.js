@@ -89,34 +89,31 @@ export const GraficoCerealEntregado = () => {
     function InfoGrafEvol(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../com_graEvolucionData.php", {
-        fetch("../gra_analisis.php", {
-            method: "POST",
-            body: data,
-        }).then(function (response) {
-            response.text().then((resp) => {
-                const data = resp;
-                var objetoData = JSON.parse(data);
-                setInfoEvo(objetoData);
-                console.log("objetoData: ", objetoData)
-                console.log("data: ", data)
-                console.log("infoEvo: ", infoEvo)
-            });
+      
+        return fetch("../gra_analisis.php", {
+          method: "POST",
+          body: data,
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Response not OK");
+          }
+          return response.json();
         });
-    }
-    
-    useEffect(() => {
+      }
+      
+      useEffect(() => {
         if (idCliente) {
-            InfoGrafEvol(idCliente);
+          InfoGrafEvol(idCliente).then(objetoData => {
+            setInfoEvo(objetoData);
+          })
+          .catch(error => {
+            console.error(error);
+          });
         }
-    }, [idCliente]);
+      }, [idCliente]);
+      
     
-    useEffect(() => {
-        console.log("infoEvo3: ", infoEvo);
-    }, [infoEvo]);
-    
-
-
 
     const dataTotal = [
         {
