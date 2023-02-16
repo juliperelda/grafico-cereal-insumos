@@ -81,7 +81,7 @@ export const GraficoCerealEntregado = () => {
 
     useEffect(() => {
         console.log(infoEvo);
-    }, [infoEvo]);
+    }, []);
 
 
 
