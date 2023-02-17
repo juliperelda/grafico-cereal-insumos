@@ -313,14 +313,14 @@ export const GraficoCerealEntregado = () => {
                         }}
                     >
                         <CartesianGrid vertical={false} horizontal={true} />
-                        <XAxis dataKey="cosecha" scale="band" tick={{ fontSize: 11 }} />
+                        <XAxis scale="band"  />
                         <YAxis tick={{ fontSize: 11 }} />
                         <Tooltip />
                         <Legend />
 
                         {/* Se agregaron los data para probar */}
                         <Bar dataKey='Entregadas' barSize={20} fill="#8fd14a" legendType='circle'>
-                            <LabelList dataKey="cosecha" position="bottom" />
+                            <LabelList dataKey="cosecha" position="bottom" tick={{ fontSize: 11 }}/>
                         </Bar> 
                         <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" />
                     </ComposedChart>
