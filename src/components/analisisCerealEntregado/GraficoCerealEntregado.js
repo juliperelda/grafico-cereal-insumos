@@ -313,7 +313,7 @@ export const GraficoCerealEntregado = () => {
                         }}
                     >
                         <CartesianGrid vertical={false} horizontal={true} />
-                        {/* <XAxis scale="band"  /> */}
+                        <XAxis xAxis={false} />
                         <YAxis tick={{ fontSize: 11 }} />
                         <Tooltip />
                         <Legend />
