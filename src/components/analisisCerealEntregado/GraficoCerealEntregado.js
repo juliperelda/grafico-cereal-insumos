@@ -322,7 +322,7 @@ export const GraficoCerealEntregado = () => {
                         <Bar dataKey='Entregadas' barSize={50} fill="#8fd14a" legendType='circle'>
                             <LabelList dataKey="cosecha" position="bottom"/>
                         </Bar> 
-                        <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" />
+                        <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2}/>
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>
