@@ -80,7 +80,7 @@ export const GraficoCerealEntregado = () => {
                 console.log("objetoData: ", objetoData)
                 // console.log("data: ", data)
                 // console.log("infoEvo: ", infoEvo)
-                console.log("dataForChart: ", dataForChart)
+                console.log("dataForChart4: ", dataForChart)
             });
         });
         // console.log("infoEvo: ", infoEvo)
@@ -91,18 +91,12 @@ export const GraficoCerealEntregado = () => {
         // Llama a la función InfoGrafEvol cuando el componente se monta y cuando el ID del cliente cambia.
         InfoGrafEvol(idCliente);
         console.log("infoEvo2: ", infoEvo);
-        console.log("dataForChart: ", dataForChart)
+        console.log("dataForChart3: ", dataForChart)
     }, [idCliente]);
 
     useEffect(() => {
-        console.log("infoEvo3: ", infoEvo);
-        console.log("dataForChart: ", dataForChart)
-    }, []);
-
-
-    useEffect(() => {
         console.log("infoEvo actualizado: ", infoEvo);
-        console.log("dataForChart: ",dataForChart)
+        console.log("dataForChart2: ",dataForChart)
       }, [infoEvo]);
       
 
@@ -300,7 +294,7 @@ export const GraficoCerealEntregado = () => {
     const handleOnChange = (key) => {
         console.log(infoEvo);
         setActiveKey(key);
-        console.log("dataForChart: ", dataForChart)
+        // console.log("dataForChart: ", dataForChart)
     };
 
 
@@ -319,7 +313,7 @@ export const GraficoCerealEntregado = () => {
             })
           );
         }
-        console.log("dataForChart: ", dataForChart)
+        console.log("dataForChart1: ", dataForChart)
       }, [infoEvo, dataForChart]);
 
     return (
