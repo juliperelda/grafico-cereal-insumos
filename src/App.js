@@ -4,7 +4,11 @@ import { GlobalContext } from "./context/GlobalContext";
 import { Analisis } from './components/analisis/Analisis';
 
 function App() {
-  const [infoEvo, setInfoEvo]=useState({});
+  const [infoTotal, setInfoTotal]=useState({});
+  const [infoSoja, setInfoSoja]=useState({});
+  const [infoTrigo, setInfoTrigo]=useState({});
+  const [infoMaiz, setInfoMaiz]=useState({});
+  const [infoOtrosGranos, setInfoOtrosGranos]=useState({});
 
   const idC = localStorage.getItem("cliente"); //Probando
   const [idCliente, setIdCliente]=useState(idC); //Probando
@@ -12,8 +16,12 @@ function App() {
 
   return (
     <GlobalContext.Provider value={{
-      infoEvo, setInfoEvo,
+      infoTotal, setInfoTotal,
       idCliente, setIdCliente, //Probando
+      infoSoja, setInfoSoja,
+      infoTrigo, setInfoTrigo,
+      infoMaiz, setInfoMaiz,
+      infoOtrosGranos, setInfoOtrosGranos,
     }}>
       {/* <p>HOLA BRODERRRRR</p> */}
       <Analisis />

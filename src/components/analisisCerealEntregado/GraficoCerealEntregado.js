@@ -46,22 +46,97 @@ const items = [
 export const GraficoCerealEntregado = () => {
 
     const {
-        infoEvo,
-        setInfoEvo,
+        infoTotal, 
+        setInfoTotal,
         idCliente, //Probando
         setIdCliente,
+        infoSoja, 
+        setInfoSoja,
+        infoTrigo, 
+        setInfoTrigo,
+        infoMaiz, 
+        setInfoMaiz,
+        infoOtrosGranos, 
+        setInfoOtrosGranos,
     } = useContext(GlobalContext);
 
     const [activeKey, setActiveKey] = useState(items[0].key);
 
+    /*------------------Inicio DataTotal----------------------*/
     //*Llama y trae los datos de la consulta php
-
-    function InfoGrafEvol(idCliente) {
+    function InfoDataTotal(idCliente) {
         console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         // fetch("../com_graEvolucionData.php", {
-        fetch("../gra_analisis.php", {
+        fetch("../gra_analisisTotal.php", {
+            method: "POST",
+            body: data,
+        }).then(function (response) {
+            response.text().then((resp) => {
+                
+                // console.log("resp: ", resp);
+                // const data = resp;
+                const data = resp.substring(resp.indexOf('['));
+                // console.log("data: ", data);
+
+                // console.log("JSON.text(data): ", JSON.text(data));
+                // console.log("JSON.parse(data): ", JSON.parse(data));
+                var objetoData = JSON.parse(data);
+                setInfoTotal(objetoData);
+                // console.log("objetoData: ", objetoData)
+                // console.log("data: ", data)
+                // console.log("infoTotal: ", infoTotal)
+                // console.log("isDataTotal4: ", isDataTotal)
+            });
+        });
+        // console.log("infoTotal: ", infoTotal)
+    }
+
+    useEffect(() => {
+        // console.log("idCliente: ", idCliente)
+        // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoDataTotal(idCliente);
+        // console.log("infoTotal2: ", infoTotal);
+        // console.log("isDataTotal3: ", isDataTotal)
+    }, [idCliente]);
+
+    useEffect(() => {
+        // console.log("infoTotal actualizado: ", infoTotal);
+        // console.log("isDataTotal2: ",isDataTotal)
+      }, [infoTotal]);
+
+
+    // infoEvo.kil = TT Entregadas
+    // infoEvo.tt_est = TT Encuesta
+    const [isDataTotal, setIsDataTotal] = useState([]);
+    useEffect(() => {
+        if (infoTotal.length > 0) {
+            setIsDataTotal(
+                infoTotal.map((item) => {
+              return {
+                cosecha: item.acos_desc,
+                Entregadas: item.kil,
+                Encuesta: item.tt_est,
+              };
+            })
+          );
+        }
+        console.log("isDataTotal: ", isDataTotal)
+      }, [infoTotal]);
+      /*------------------Fin DataTotal----------------------*/
+
+
+
+
+
+    /*------------------Inicio DataSoja----------------------*/
+      function InfoDataSoja(idCliente) {
+        console.log("idCliente: ", idCliente)
+        const data = new FormData();
+        data.append("idC", idCliente);
+        // fetch("../com_graEvolucionData.php", {
+        fetch("../gra_analisisSoja.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -75,163 +150,45 @@ export const GraficoCerealEntregado = () => {
                 // console.log("JSON.text(data): ", JSON.text(data));
                 console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
-                setInfoEvo(objetoData);
+                setInfoSoja(objetoData);
                 console.log("objetoData: ", objetoData)
                 // console.log("data: ", data)
-                // console.log("infoEvo: ", infoEvo)
-                console.log("isDataTotal4: ", isDataTotal)
+                // console.log("infoSoja: ", infoSoja)
+                console.log("isDataSoja4: ", isDataSoja)
             });
         });
-        // console.log("infoEvo: ", infoEvo)
+        // console.log("infoTotal: ", infoTotal)
     }
 
     useEffect(() => {
         console.log("idCliente: ", idCliente)
-        // Llama a la función InfoGrafEvol cuando el componente se monta y cuando el ID del cliente cambia.
-        InfoGrafEvol(idCliente);
-        console.log("infoEvo2: ", infoEvo);
-        console.log("isDataTotal3: ", isDataTotal)
+        // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoDataSoja(idCliente);
+        console.log("infoSoja2: ", infoSoja);
+        console.log("isDataSoja3: ", isDataSoja)
     }, [idCliente]);
 
     useEffect(() => {
-        console.log("infoEvo actualizado: ", infoEvo);
-        console.log("isDataTotal2: ",isDataTotal)
-      }, [infoEvo]);
-      
+        console.log("infoSoja actualizado: ", infoSoja);
+        console.log("isDataSoja2: ",isDataSoja)
+      }, [infoTotal]);
 
-
-
-    const dataSoja = [
-        {
-            name: 'Page A',
-            'TT Entregadas': 50,
-            'TT Encuesta': 80,
-        },
-        {
-            name: 'Page B',
-            'TT Entregadas': 86,
-            'TT Encuesta': 96,
-        },
-        {
-            name: 'Page C',
-            'TT Entregadas': 37,
-            'TT Encuesta': 18,
-        },
-        {
-            name: 'Page D',
-            'TT Entregadas': 14,
-            'TT Encuesta': 12,
-        },
-        {
-            name: 'Page E',
-            'TT Entregadas': 52,
-            'TT Encuesta': 18,
-        },
-        {
-            name: 'Page F',
-            'TT Entregadas': 14,
-            'TT Encuesta': 68,
-        },
-    ]
-
-    const dataMaiz = [
-        {
-            name: 'Page A',
-            'TT Entregadas': 50,
-            'TT Encuesta': 80,
-        },
-        {
-            name: 'Page B',
-            'TT Entregadas': 86,
-            'TT Encuesta': 96,
-        },
-        {
-            name: 'Page C',
-            'TT Entregadas': 85,
-            'TT Encuesta': 100,
-        },
-        {
-            name: 'Page D',
-            'TT Entregadas': 10,
-            'TT Encuesta': 12,
-        },
-        {
-            name: 'Page E',
-            'TT Entregadas': 92,
-            'TT Encuesta': 58,
-        },
-        {
-            name: 'Page F',
-            'TT Entregadas': 35,
-            'TT Encuesta': 40,
-        },
-    ]
-
-    const dataTrigo = [
-        {
-            name: 'Page A',
-            'TT Entregadas': 52,
-            'TT Encuesta': 64,
-        },
-        {
-            name: 'Page B',
-            'TT Entregadas': 16,
-            'TT Encuesta': 74,
-        },
-        {
-            name: 'Page C',
-            'TT Entregadas': 36,
-            'TT Encuesta': 100,
-        },
-        {
-            name: 'Page D',
-            'TT Entregadas': 15,
-            'TT Encuesta': 46,
-        },
-        {
-            name: 'Page E',
-            'TT Entregadas': 14,
-            'TT Encuesta': 23,
-        },
-        {
-            name: 'Page F',
-            'TT Entregadas': 62,
-            'TT Encuesta': 15,
-        },
-    ]
-
-    const dataOtrosGranos = [
-        {
-            name: 'Page A',
-            'TT Entregadas': 20,
-            'TT Encuesta': 30,
-        },
-        {
-            name: 'Page B',
-            'TT Entregadas': 56,
-            'TT Encuesta': 36,
-        },
-        {
-            name: 'Page C',
-            'TT Entregadas': 15,
-            'TT Encuesta': 40,
-        },
-        {
-            name: 'Page D',
-            'TT Entregadas': 50,
-            'TT Encuesta': 77,
-        },
-        {
-            name: 'Page E',
-            'TT Entregadas': 22,
-            'TT Encuesta': 18,
-        },
-        {
-            name: 'Page F',
-            'TT Entregadas': 45,
-            'TT Encuesta': 60,
-        }
-    ]
+      const [isDataSoja, setIsDataSoja] = useState([]);
+      useEffect(() => {
+          if (infoTotal.length > 0) {
+            setIsDataSoja(
+                infoSoja.map((item) => {
+                return {
+                  cosecha: item.acos_desc,
+                  Entregadas: item.kil,
+                  Encuesta: item.tt_est,
+                };
+              })
+            );
+          }
+          console.log("isDataSoja: ", isDataSoja)
+        }, [infoSoja]);
+      /*------------------Fin DataSoja----------------------*/
 
 
     let data;
@@ -240,16 +197,16 @@ export const GraficoCerealEntregado = () => {
             data = isDataTotal;
             break;
         case '2':
-            data = dataSoja;
+            data = isDataSoja;
             break;
         case '3':
-            data = dataTrigo;
+            // data = dataTrigo;
             break;
         case '4':
-            data = dataMaiz;
+            // data = dataMaiz;
             break;
         case '5':
-            data = dataOtrosGranos;
+            // data = dataOtrosGranos;
             break;
         default:
             data = isDataTotal;
@@ -260,29 +217,13 @@ export const GraficoCerealEntregado = () => {
 
 
     const handleOnChange = (key) => {
-        console.log(infoEvo);
+        console.log(infoTotal);
         setActiveKey(key);
         // console.log("isDataTotal: ", isDataTotal)
     };
 
 
-    // infoEvo.kil = TT Entregadas
-    // infoEvo.tt_est = TT Encuesta
-    const [isDataTotal, setIsDataTotal] = useState([]);
-    useEffect(() => {
-        if (infoEvo.length > 0) {
-            setIsDataTotal(
-            infoEvo.map((item) => {
-              return {
-                cosecha: item.acos_desc,
-                Entregadas: item.kil,
-                Encuesta: item.tt_est,
-              };
-            })
-          );
-        }
-        console.log("isDataTotal: ", isDataTotal)
-      }, [infoEvo]);
+
 
     return (
         <>
@@ -304,7 +245,7 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={150}
-                        data={isDataTotal}
+                        data={isDataSoja}
                         margin={{
                             top: 20,
                             right: 20,
@@ -329,3 +270,6 @@ export const GraficoCerealEntregado = () => {
         </>
     )
 }
+
+
+
