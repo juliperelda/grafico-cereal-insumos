@@ -135,7 +135,6 @@ export const GraficoCerealEntregado = () => {
         console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../com_graEvolucionData.php", {
         fetch("../gra_analisisSoja.php", {
             method: "POST",
             body: data,
@@ -209,7 +208,7 @@ export const GraficoCerealEntregado = () => {
             // data = dataOtrosGranos;
             break;
         default:
-            data = isDataTotal;
+            data = isDataSoja;
             break;
     }
 
@@ -245,7 +244,7 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={150}
-                        data={isDataTotal}
+                        data={isDataSoja}
                         margin={{
                             top: 20,
                             right: 20,
