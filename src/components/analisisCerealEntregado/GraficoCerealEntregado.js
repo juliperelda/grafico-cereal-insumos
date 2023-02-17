@@ -303,7 +303,7 @@ export const GraficoCerealEntregado = () => {
                 <ResponsiveContainer>
                     <ComposedChart
                         width={500}
-                        height={200}
+                        height={150}
                         data={isDataTotal}
                         margin={{
                             top: 20,
@@ -320,7 +320,7 @@ export const GraficoCerealEntregado = () => {
 
                         {/* Se agregaron los data para probar */}
                         <Bar dataKey='Entregadas' barSize={50} fill="#8fd14a" legendType='circle'>
-                            <LabelList dataKey="cosecha" position="bottom" tick={{ fontSize: 11 }}/>
+                            <LabelList dataKey="cosecha" position="bottom"/>
                         </Bar> 
                         <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" />
                     </ComposedChart>

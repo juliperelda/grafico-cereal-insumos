@@ -53,3 +53,7 @@
     font-size: 13px !important;
     font-weight: bold;
   }
+
+  .recharts-default-legend{
+    font-size: 11px;
+  }
