@@ -78,11 +78,11 @@ export const GraficoCerealEntregado = () => {
                 var objetoData = JSON.parse(data);
                 setInfoEvo(objetoData);
                 console.log("objetoData: ", objetoData)
-                console.log("data: ", data)
-                console.log("infoEvo: ", infoEvo)
+                // console.log("data: ", data)
+                // console.log("infoEvo: ", infoEvo)
             });
         });
-        console.log("infoEvo: ", infoEvo)
+        // console.log("infoEvo: ", infoEvo)
     }
 
     useEffect(() => {
@@ -99,6 +99,7 @@ export const GraficoCerealEntregado = () => {
 
     useEffect(() => {
         console.log("infoEvo actualizado: ", infoEvo);
+        console.log("dataForChart: ",dataForChart)
       }, [infoEvo]);
       
 
@@ -296,6 +297,7 @@ export const GraficoCerealEntregado = () => {
     const handleOnChange = (key) => {
         console.log(infoEvo);
         setActiveKey(key);
+        console.log(dataForChart)
     };
 
 
@@ -314,7 +316,7 @@ export const GraficoCerealEntregado = () => {
             })
           );
         }
-        console.log(dataForChart)
+        console.log("dataForChart: ",dataForChart)
       }, [infoEvo]);
 
     return (
@@ -326,7 +328,7 @@ export const GraficoCerealEntregado = () => {
                     onChange={setActiveKey}
                 >
                     {items.map((item) => (
-                        <TabPane key={item.key} tab={item.label} onChange={console.log(dataForChart)}>
+                        <TabPane key={item.key} tab={item.label}>
                             {/* {item.children} */}
                         </TabPane>
                     ))}
