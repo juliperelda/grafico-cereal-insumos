@@ -271,7 +271,7 @@ export const GraficoCerealEntregado = () => {
     let data;
     switch (activeKey) {
         case '1':
-            data = dataTotal;
+            data = dataForChart;
             break;
         case '2':
             data = dataSoja;
@@ -286,7 +286,7 @@ export const GraficoCerealEntregado = () => {
             data = dataOtrosGranos;
             break;
         default:
-            data = dataTotal;
+            data = dataForChart;
             break;
     }
 
@@ -326,7 +326,7 @@ export const GraficoCerealEntregado = () => {
                     onChange={setActiveKey}
                 >
                     {items.map((item) => (
-                        <TabPane key={item.key} tab={item.label}>
+                        <TabPane key={item.key} tab={item.label} onChange={console.log(dataForChart)}>
                             {/* {item.children} */}
                         </TabPane>
                     ))}
