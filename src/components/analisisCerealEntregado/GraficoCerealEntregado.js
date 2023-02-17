@@ -245,7 +245,7 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={150}
-                        data={isDataSoja}
+                        data={isDataTotal}
                         margin={{
                             top: 20,
                             right: 20,
