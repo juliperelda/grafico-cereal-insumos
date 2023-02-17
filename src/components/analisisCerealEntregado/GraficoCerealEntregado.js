@@ -314,7 +314,7 @@ export const GraficoCerealEntregado = () => {
           );
         }
         console.log("dataForChart1: ", dataForChart)
-      }, [infoEvo, dataForChart]);
+      }, [infoEvo]);
 
     return (
         <>
