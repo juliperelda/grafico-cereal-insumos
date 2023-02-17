@@ -298,6 +298,25 @@ export const GraficoCerealEntregado = () => {
         setActiveKey(key);
     };
 
+
+    // infoEvo.kil = TT Entregadas
+    // infoEvo.tt_est = TT Encuesta
+    const [dataForChart, setDataForChart] = useState([]);
+    useEffect(() => {
+        if (infoEvo.length > 0) {
+          setDataForChart(
+            infoEvo.map((item) => {
+              return {
+                cosecha: item.acos_desc,
+                Entregadas: item.kil,
+                Encuesta: item.tt_est,
+              };
+            })
+          );
+        }
+        console.log(dataForChart)
+      }, [infoEvo]);
+
     return (
         <>
             <div className='divContainerPestañas'>
@@ -318,7 +337,7 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={200}
-                        // data={data}
+                        data={dataForChart}
                         margin={{
                             top: 20,
                             right: 20,
@@ -327,14 +346,14 @@ export const GraficoCerealEntregado = () => {
                         }}
                     >
                         <CartesianGrid vertical={false} horizontal={true} />
-                        <XAxis dataKey="name" scale="band" />
+                        <XAxis dataKey="cosecha" scale="band" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
 
                         {/* Se agregaron los data para probar */}
-                        <Bar dataKey='TT Entregadas' data={infoEvo.kil} barSize={20} fill="#8fd14a" legendType='circle' /> 
-                        <Line type="monotone" dataKey='TT Encuesta' data={infoEvo.tt_est} stroke="#00b33b" />
+                        <Bar dataKey='Entregadas' barSize={20} fill="#8fd14a" legendType='circle' /> 
+                        <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" />
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>
