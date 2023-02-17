@@ -1,7 +1,7 @@
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import React, { useContext, useEffect, useState } from 'react'
-import { CartesianGrid, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, ComposedChart, Line, Bar } from 'recharts';
+import { CartesianGrid, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, ComposedChart, Line, Bar, LabelList } from 'recharts';
 import { GlobalContext } from '../../context/GlobalContext';
 import './graficoCerealEntregado.css'
 
@@ -65,7 +65,6 @@ export const GraficoCerealEntregado = () => {
             method: "POST",
             body: data,
         }).then(function (response) {
-            console.log("response: ", response);
             response.text().then((resp) => {
                 
                 console.log("resp: ", resp);
@@ -80,7 +79,7 @@ export const GraficoCerealEntregado = () => {
                 console.log("objetoData: ", objetoData)
                 // console.log("data: ", data)
                 // console.log("infoEvo: ", infoEvo)
-                console.log("dataForChart4: ", dataForChart)
+                console.log("isDataTotal4: ", isDataTotal)
             });
         });
         // console.log("infoEvo: ", infoEvo)
@@ -91,47 +90,16 @@ export const GraficoCerealEntregado = () => {
         // Llama a la función InfoGrafEvol cuando el componente se monta y cuando el ID del cliente cambia.
         InfoGrafEvol(idCliente);
         console.log("infoEvo2: ", infoEvo);
-        console.log("dataForChart3: ", dataForChart)
+        console.log("isDataTotal3: ", isDataTotal)
     }, [idCliente]);
 
     useEffect(() => {
         console.log("infoEvo actualizado: ", infoEvo);
-        console.log("dataForChart2: ",dataForChart)
+        console.log("isDataTotal2: ",isDataTotal)
       }, [infoEvo]);
       
 
-    const dataTotal = [
-        {
-            name: 'Page A',
-            'TT Entregadas': 90,
-            'TT Encuesta': 80,
-        },
-        {
-            name: 'Page B',
-            'TT Entregadas': 68,
-            'TT Encuesta': 67,
-        },
-        {
-            name: 'Page C',
-            'TT Entregadas': 97,
-            'TT Encuesta': 98,
-        },
-        {
-            name: 'Page D',
-            'TT Entregadas': 14,
-            'TT Encuesta': 12,
-        },
-        {
-            name: 'Page E',
-            'TT Entregadas': 15,
-            'TT Encuesta': 11,
-        },
-        {
-            name: 'Page F',
-            'TT Entregadas': 40,
-            'TT Encuesta': 68,
-        },
-    ];
+
 
     const dataSoja = [
         {
@@ -269,7 +237,7 @@ export const GraficoCerealEntregado = () => {
     let data;
     switch (activeKey) {
         case '1':
-            data = dataForChart;
+            data = isDataTotal;
             break;
         case '2':
             data = dataSoja;
@@ -284,7 +252,7 @@ export const GraficoCerealEntregado = () => {
             data = dataOtrosGranos;
             break;
         default:
-            data = dataForChart;
+            data = isDataTotal;
             break;
     }
 
@@ -294,16 +262,16 @@ export const GraficoCerealEntregado = () => {
     const handleOnChange = (key) => {
         console.log(infoEvo);
         setActiveKey(key);
-        // console.log("dataForChart: ", dataForChart)
+        // console.log("isDataTotal: ", isDataTotal)
     };
 
 
     // infoEvo.kil = TT Entregadas
     // infoEvo.tt_est = TT Encuesta
-    const [dataForChart, setDataForChart] = useState([]);
+    const [isDataTotal, setIsDataTotal] = useState([]);
     useEffect(() => {
         if (infoEvo.length > 0) {
-          setDataForChart(
+            setIsDataTotal(
             infoEvo.map((item) => {
               return {
                 cosecha: item.acos_desc,
@@ -313,7 +281,7 @@ export const GraficoCerealEntregado = () => {
             })
           );
         }
-        console.log("dataForChart1: ", dataForChart)
+        console.log("isDataTotal: ", isDataTotal)
       }, [infoEvo]);
 
     return (
@@ -336,7 +304,7 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={200}
-                        data={dataForChart}
+                        data={isDataTotal}
                         margin={{
                             top: 20,
                             right: 20,
@@ -345,13 +313,15 @@ export const GraficoCerealEntregado = () => {
                         }}
                     >
                         <CartesianGrid vertical={false} horizontal={true} />
-                        <XAxis dataKey="cosecha" scale="band" />
-                        <YAxis />
+                        <XAxis dataKey="cosecha" scale="band" tick={{ fontSize: 11 }} />
+                        <YAxis tick={{ fontSize: 11 }} />
                         <Tooltip />
                         <Legend />
 
                         {/* Se agregaron los data para probar */}
-                        <Bar dataKey='Entregadas' barSize={20} fill="#8fd14a" legendType='circle' /> 
+                        <Bar dataKey='Entregadas' barSize={20} fill="#8fd14a" legendType='circle'>
+                            <LabelList dataKey="cosecha" position="bottom" />
+                        </Bar> 
                         <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" />
                     </ComposedChart>
                 </ResponsiveContainer>
