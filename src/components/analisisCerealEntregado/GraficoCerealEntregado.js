@@ -244,7 +244,14 @@ export const GraficoCerealEntregado = () => {
                     <ComposedChart
                         width={500}
                         height={150}
-                        data={isDataSoja}
+                        // data={isDataSoja}
+                        data={
+                                activeKey === '1' ? isDataTotal : 
+                                activeKey === '2' ? isDataSoja : isDataTotal
+                                // activeKey === '3' ? isDataTrigo : 
+                                // activeKey === '4' ? isDataMaiz : 
+                                // isDataOtrosGranos
+                            }
                         margin={{
                             top: 20,
                             right: 20,
