@@ -122,7 +122,7 @@ export const GraficoCerealEntregado = () => {
             })
           );
         }
-        console.log("isDataTotal: ", isDataTotal)
+        // console.log("isDataTotal: ", isDataTotal)
       }, [infoTotal]);
       /*------------------Fin DataTotal----------------------*/
 
@@ -170,7 +170,7 @@ export const GraficoCerealEntregado = () => {
     useEffect(() => {
         console.log("infoSoja actualizado: ", infoSoja);
         console.log("isDataSoja2: ",isDataSoja)
-      }, [infoTotal]);
+      }, [infoSoja]);
 
       const [isDataSoja, setIsDataSoja] = useState([]);
       useEffect(() => {
