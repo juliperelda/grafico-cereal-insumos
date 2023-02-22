@@ -2,7 +2,7 @@
     direction: flex;
     flex-direction: row;
     width: 100%;
-    height: 150px;
+    height: 250px;
 }
 
 
@@ -52,8 +52,23 @@
     color: black !important;
     font-size: 13px !important;
     font-weight: bold;
-  }
+}
 
-  .recharts-default-legend{
-    font-size: 11px;
-  }
+.recharts-default-legend{
+font-size: 11px;
+}
+
+.SpinLoading{
+padding: 50px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 4px;
+}
+
+.ant-spin-text { 
+color: #00b33c; 
+/* color: #554c4c;  */
+}
+
+.ant-spin-dot-item{
+background-color: #00b33c !important;
+}
