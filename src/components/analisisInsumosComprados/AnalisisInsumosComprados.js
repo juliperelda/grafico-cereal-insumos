@@ -1,7 +1,8 @@
-import { Tabs } from 'antd'
+import { Spin, Tabs } from 'antd'
 import TabPane from 'antd/es/tabs/TabPane'
-import React, { useState } from 'react'
-import { Area, Bar, CartesianGrid, ComposedChart, Legend, Line, LineChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
+import React, { useContext, useEffect, useState } from 'react'
+import { Area, Bar, CartesianGrid, ComposedChart, LabelList, Legend, Line, LineChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { GlobalContext } from '../../context/GlobalContext'
 import './analisisInsumosComprados.css'
 
 
@@ -16,9 +17,24 @@ const SEMILLAS = " (2, 3, 5, 6)";
 
 export const AnalisisInsumosComprados = () => {
 
-    const onChange = (key) => {
-        console.log(key);
-    };
+    const [isLoading, setIsLoading] = useState(1);
+
+    const handleChangeTab = (key) => {
+        setActiveKey(key)
+        setIsLoading(1)
+    }
+
+    useEffect(() => {
+        if (isLoading > 0) {
+            setTimeout(() => {
+                setIsLoading(isLoading - 1);
+            }, 1000);
+        } else {
+            setIsLoading(0)
+        }
+
+    }, [isLoading])
+
     const items = [
         {
             key: '1',
@@ -42,165 +58,214 @@ export const AnalisisInsumosComprados = () => {
         },
     ];
 
-    // const dataa = [
-    //     { x: 100, y: 200, z: 200 },
-    //     { x: 50, y: 100, z: 260 },
-    // ];
-
+    const {
+        idCliente, //Probando
+        setIdCliente,
+        infoInsumoTotal,
+        setInfoInsumoTotal,
+        infoInsumoAgroquimicos,
+        setInfoInsumoAgroquimicos,
+        infoInsumoSemillas,
+        setInfoInsumoSemillas,
+        infoInsumoFertilizantes,
+        setInfoInsumoFertilizantes,
+    } = useContext(GlobalContext);
 
     const [activeKey, setActiveKey] = useState(items[0].key);
+    const [isValorCompra, setIsValorCompra] = useState(true);
+    const [isValorEstimado, setIsValorEstimado] = useState(true);
 
 
-    const dataTotal = [
-        {
-            name: 'Page A',
-            'Compra U$S': 20,
-            'Estimado U$S': 10,
-        },
-        {
-            name: 'Page B',
-            'Compra U$S': 58,
-            'Estimado U$S': 67,
-        },
-        {
-            name: 'Page C',
-            'Compra U$S': 97,
-            'Estimado U$S': 98,
-        },
-        {
-            name: 'Page D',
-            'Compra U$S': 14,
-            'Estimado U$S': 22,
-        },
-        {
-            name: 'Page E',
-            'Compra U$S': 15,
-            'Estimado U$S': 41,
-        },
-        {
-            name: 'Page F',
-            'Compra U$S': 20,
-            'Estimado U$S': 68,
-        },
-    ];
+    /*------------------Inicio DataTotal----------------------*/
+    //*Llama y trae los datos de la consulta php
+    function InfoInsumoTotal(idCliente) {
+        const data = new FormData();
+        data.append("idC", idCliente);
+        fetch("../gra_insumoTotal.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+            method: "POST",
+            body: data,
+        }).then(function (response) {
+            response.text().then((resp) => {
+                const data = resp.substring(resp.indexOf('['));
+                var objetoData = JSON.parse(data);
+                setInfoInsumoTotal(objetoData);
+            });
+        });
+    }
 
-    const dataAgroquimicos = [
-        {
-            name: 'Page A',
-            'Compra U$S': 10,
-            'Estimado U$S': 20,
-        },
-        {
-            name: 'Page B',
-            'Compra U$S': 46,
-            'Estimado U$S': 36,
-        },
-        {
-            name: 'Page C',
-            'Compra U$S': 57,
-            'Estimado U$S': 68,
-        },
-        {
-            name: 'Page D',
-            'Compra U$S': 14,
-            'Estimado U$S': 22,
-        },
-        {
-            name: 'Page E',
-            'Compra U$S': 62,
-            'Estimado U$S': 58,
-        },
-        {
-            name: 'Page F',
-            'Compra U$S': 74,
-            'Estimado U$S': 88,
-        },
-    ]
+    useEffect(() => {
+        // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoInsumoTotal(idCliente);
+    }, [idCliente]);
 
-    const dataSemillas = [
-        {
-            name: 'Page A',
-            'Compra U$S': 20,
-            'Estimado U$S': 30,
-        },
-        {
-            name: 'Page B',
-            'Compra U$S': 46,
-            'Estimado U$S': 36,
-        },
-        {
-            name: 'Page C',
-            'Compra U$S': 55,
-            'Estimado U$S': 40,
-        },
-        {
-            name: 'Page D',
-            'Compra U$S': 20,
-            'Estimado U$S': 32,
-        },
-        {
-            name: 'Page E',
-            'Compra U$S': 42,
-            'Estimado U$S': 38,
-        },
-        {
-            name: 'Page F',
-            'Compra U$S': 65,
-            'Estimado U$S': 30,
-        },
-    ]
+    const [isDataInsumoTotal, setIsDataInsumoTotal] = useState([]);
+    useEffect(() => {
+        if (infoInsumoTotal.length > 0) {
+            setIsDataInsumoTotal(
+                infoInsumoTotal.map((item) => {
+                    return {
+                        cosecha: item.acos_desc,
+                        Entregadas: item.kil,
+                        Encuesta: item.tt_est,
+                    };
+                })
+            );
+        }
+    }, [infoInsumoTotal]);
+    /*------------------Fin DataTotal----------------------*/
 
-    const dataFertilizantes = [
-        {
-            name: 'Page A',
-            'Compra U$S': 42,
-            'Estimado U$S': 34,
-        },
-        {
-            name: 'Page B',
-            'Compra U$S': 56,
-            'Estimado U$S': 24,
-        },
-        {
-            name: 'Page C',
-            'Compra U$S': 56,
-            'Estimado U$S': 15,
-        },
-        {
-            name: 'Page D',
-            'Compra U$S': 11,
-            'Estimado U$S': 36,
-        },
-        {
-            name: 'Page E',
-            'Compra U$S': 14,
-            'Estimado U$S': 13,
-        },
-        {
-            name: 'Page F',
-            'Compra U$S': 62,
-            'Estimado U$S': 15,
-        },
-    ]
+    /*------------------Inicio DataAgroquimicos----------------------*/
+    //*Llama y trae los datos de la consulta php
+    function InfoInsumoAgroquimicos(idCliente) {
+        const data = new FormData();
+        data.append("idC", idCliente);
+        fetch("../gra_insumoAgroquimicos.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+            method: "POST",
+            body: data,
+        }).then(function (response) {
+            response.text().then((resp) => {
+                const data = resp.substring(resp.indexOf('['));
+                var objetoData = JSON.parse(data);
+                setInfoInsumoAgroquimicos(objetoData);
+            });
+        });
+    }
+
+    useEffect(() => {
+        // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoInsumoAgroquimicos(idCliente);
+    }, [idCliente]);
+
+    const [isDataInsumoAgroquimicos, setIsDataInsumoAgroquimicos] = useState([]);
+    useEffect(() => {
+        if (infoInsumoAgroquimicos.length > 0) {
+            setIsDataInsumoAgroquimicos(
+                infoInsumoAgroquimicos.map((item) => {
+                    return {
+                        cosecha: item.acos_desc,
+                        Entregadas: item.kil,
+                        Encuesta: item.tt_est,
+                    };
+                })
+            );
+        }
+    }, [infoInsumoAgroquimicos]);
+    /*------------------Fin DataAgroquimicos----------------------*/
+
+    /*------------------Inicio DataSemillas----------------------*/
+    //*Llama y trae los datos de la consulta php
+    function InfoInsumoSemillas(idCliente) {
+        const data = new FormData();
+        data.append("idC", idCliente);
+        fetch("../gra_insumoSemillas.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+            method: "POST",
+            body: data,
+        }).then(function (response) {
+            response.text().then((resp) => {
+                const data = resp.substring(resp.indexOf('['));
+                var objetoData = JSON.parse(data);
+                setInfoInsumoSemillas(objetoData);
+            });
+        });
+    }
+
+    useEffect(() => {
+        // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoInsumoSemillas(idCliente);
+    }, [idCliente]);
+
+    const [isDataInsumoSemillas, setIsDataInsumoSemillas] = useState([]);
+    useEffect(() => {
+        if (infoInsumoSemillas.length > 0) {
+            setIsDataInsumoSemillas(
+                infoInsumoSemillas.map((item) => {
+                    return {
+                        cosecha: item.acos_desc,
+                        Entregadas: item.kil,
+                        Encuesta: item.tt_est,
+                    };
+                })
+            );
+        }
+    }, [infoInsumoSemillas]);
+    /*------------------Fin DataAgroquimicos----------------------*/
+
+    /*------------------Inicio DataFertilizantes----------------------*/
+    //*Llama y trae los datos de la consulta php
+    function InfoInsumoFertilizantes(idCliente) {
+        const data = new FormData();
+        data.append("idC", idCliente);
+        fetch("../gra_insumoFertilizantes.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+            method: "POST",
+            body: data,
+        }).then(function (response) {
+            response.text().then((resp) => {
+                const data = resp.substring(resp.indexOf('['));
+                var objetoData = JSON.parse(data);
+                setInfoInsumoFertilizantes(objetoData);
+            });
+        });
+    }
+
+    useEffect(() => {
+        // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
+        InfoInsumoFertilizantes(idCliente);
+    }, [idCliente]);
+
+    const [isDataInsumoFertilizantes, setIsDataInsumoFertilizantes] = useState([]);
+    useEffect(() => {
+        if (infoInsumoFertilizantes.length > 0) {
+            setIsDataInsumoFertilizantes(
+                infoInsumoFertilizantes.map((item) => {
+                    return {
+                        cosecha: item.acos_desc,
+                        Entregadas: item.kil,
+                        Encuesta: item.tt_est,
+                    };
+                })
+            );
+        }
+    }, [infoInsumoFertilizantes]);
+    /*------------------Fin DataFertilizantes----------------------*/
+
+
 
     let data;
     switch (activeKey) {
         case '1':
-            data = dataTotal;
+            data = isDataInsumoTotal;
             break;
         case '2':
-            data = dataAgroquimicos;
+            data = isDataInsumoAgroquimicos;
             break;
         case '3':
-            data = dataSemillas;
+            data = isDataInsumoSemillas;
             break;
         case '4':
-            data = dataFertilizantes;
+            data = isDataInsumoFertilizantes;
             break;
         default:
-            data = dataTotal;
+            data = isDataInsumoTotal;
             break;
     }
+
+    const handleLegendClick = (x) => {
+        console.log(x);
+        console.log("click");
+        if (x.value === "Compra U$S") {
+            console.log("seleccionaste Compra");
+            setIsValorCompra(!isValorCompra);
+        }
+
+        if (x.value === "Estimado U$S") {
+            console.log("seleccionaste Estimado");
+            setIsValorEstimado(!isValorEstimado);
+        }
+    };
 
 
 
@@ -208,39 +273,77 @@ export const AnalisisInsumosComprados = () => {
     return (
         <div className='divContainerPestañasInsumos'>
 
-            <Tabs
-                className='tabs-custom'
-                activeKey={activeKey}
-                onChange={setActiveKey}
-            >
-                {items.map((item) => (
-                    <TabPane key={item.key} tab={item.label}>
-                        {/* {item.children} */}
-                    </TabPane>
-                ))}
-            </Tabs>
-            <ResponsiveContainer>
-                <ComposedChart
-                    width={500}
-                    height={400}
-                    data={data}
-                    margin={{
-                        top: 20,
-                        right: 20,
-                        bottom: 20,
-                        left: 20,
-                    }}
-                >
-                    <CartesianGrid vertical={false} horizontal={true} />
-                    <XAxis dataKey="name" scale="band" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey='Compra U$S' barSize={20} fill="#4ed9fc" legendType='circle' />
-                    <Line type="monotone" dataKey='Estimado U$S' stroke="#32586E" />
-                </ComposedChart>
-            </ResponsiveContainer>
+            {
+                isLoading > 0 ?
+                    <Tabs
+                        className='tabs-custom'
+                        activeKey={activeKey}
+                        onChange={(key) => handleChangeTab(key)}
+                    >
+                        {items.map((item) => (
+                            <TabPane
+                                disabled={true}
+                                key={item.key}
+                                tab={item.label}>
+                                {/* {item.children} */}
+                            </TabPane>
+                        ))}
+                    </Tabs>
+                    :
+                    <Tabs
+                        className='tabs-custom'
+                        activeKey={activeKey}
+                        onChange={(key) => handleChangeTab(key)}
+                    >
+                        {items.map((item) => (
+                            <TabPane
+                                key={item.key}
+                                tab={item.label}>
+                            </TabPane>
+                        ))}
+                    </Tabs>
+            }
 
+            {
+                isLoading > 0 ? <Spin className='prueba' tip="Loading" size="large" style={{ borderColor: 'red' }} > <div className="SpinLoading" /> </Spin> :
+                    <ResponsiveContainer>
+                        <ComposedChart
+                            width={500}
+                            height={250}
+                            data={
+                                activeKey === '1' ? isDataInsumoTotal :
+                                    activeKey === '2' ? isDataInsumoAgroquimicos :
+                                        activeKey === '3' ? isDataInsumoSemillas :
+                                            isDataInsumoFertilizantes
+                            }
+                            margin={{
+                                top: 20,
+                                right: 20,
+                                bottom: 20,
+                                left: 20,
+                            }}
+                        >
+                            <CartesianGrid vertical={false} horizontal={true} />
+                            <XAxis dataKey="cosecha" tick={() => null} scale="band" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend
+                                onClick={(x) => handleLegendClick(x)}
+                            />
+
+                            {isValorCompra ? (
+                                <Bar dataKey='Compra U$S' name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
+                            ) : (
+                                <Bar dataKey={0} name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
+                            )}
+                            {isValorEstimado ? (
+                                <Line type="monotone" name="Estimado U$S" dataKey='Estimado U$S' stroke="#32586E" />
+                            ) : (
+                                <Line type="monotone" name="Estimado U$S" dataKey={0} stroke="#32586E" />
+                            )}
+                        </ComposedChart>
+                    </ResponsiveContainer>
+            }
         </div>
     )
 }

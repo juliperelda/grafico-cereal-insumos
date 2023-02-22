@@ -45,11 +45,9 @@ const items = [
 
 export const GraficoCerealEntregado = () => {
 
-    // const [tabDisabled, setTabDisabled] = useState(false);
     const [isLoading, setIsLoading] = useState(1);
 
     const handleChangeTab = (key) => {
-        // setTabDisabled(true);
         setActiveKey(key)
         setIsLoading(1)
     }
@@ -92,8 +90,8 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", "2049");
         // fetch("../com_graEvolucionData.php", {
-        // fetch("../gra_analisisTotal.php", {
-        fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+        fetch("../gra_analisisTotal.php", {
+        // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -156,32 +154,19 @@ export const GraficoCerealEntregado = () => {
 
     /*------------------Inicio DataSoja----------------------*/
     function InfoDataSoja(idCliente) {
-        console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../gra_analisisSoja.php", {
-        fetch("http://10.0.0.28/tati/modulos/gra_analisisSoja.php", {
+        fetch("../gra_analisisSoja.php", {
+        // fetch("http://10.0.0.28/tati/modulos/gra_analisisSoja.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
             response.text().then((resp) => {
-
-                console.log("resp: ", resp);
-                // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                console.log("data: ", data);
-
-                // console.log("JSON.text(data): ", JSON.text(data));
-                console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoSoja(objetoData);
-                console.log("objetoData: ", objetoData)
-                // console.log("data: ", data)
-                // console.log("infoSoja: ", infoSoja)
-                console.log("isDataSoja4: ", isDataSoja)
             });
         });
-        // console.log("infoTotal: ", infoTotal)
     }
 
     useEffect(() => {
@@ -220,8 +205,8 @@ export const GraficoCerealEntregado = () => {
         console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../gra_analisisSoja.php", {
-        fetch("http://10.0.0.28/tati/modulos/gra_analisisTrigo.php", {
+        fetch("../gra_analisisTrigo.php", {
+        // fetch("http://10.0.0.28/tati/modulos/gra_analisisTrigo.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -278,46 +263,26 @@ export const GraficoCerealEntregado = () => {
 
     /*------------------Inicio DataMaiz----------------------*/
     function InfoDataMaiz(idCliente) {
-        console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../gra_analisisSoja.php", {
-        fetch("http://10.0.0.28/tati/modulos/gra_analisisMaiz.php", {
+        fetch("../gra_analisisMaiz.php", {
+        // fetch("http://10.0.0.28/tati/modulos/gra_analisisMaiz.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
             response.text().then((resp) => {
-
-                console.log("resp: ", resp);
-                // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                console.log("data: ", data);
-
-                // console.log("JSON.text(data): ", JSON.text(data));
-                console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoMaiz(objetoData);
-                console.log("objetoData: ", objetoData)
-                // console.log("data: ", data)
-                // console.log("infoMaiz: ", infoMaiz)
-                console.log("isDataMaiz4: ", isDataMaiz)
             });
         });
-        // console.log("infoMaiz: ", infoMaiz)
     }
 
     useEffect(() => {
-        console.log("idCliente: ", idCliente)
+        console.log("idClienteMaiz: ", idCliente)
         // Llama a la función InfoDataMaiz cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataMaiz(idCliente);
-        console.log("infoMaiz2: ", infoMaiz);
-        console.log("isDataMaiz3: ", isDataMaiz)
     }, [idCliente]);
-
-    useEffect(() => {
-        console.log("infoMaiz actualizado: ", infoMaiz);
-        console.log("isDataMaiz2: ", isDataMaiz)
-    }, [infoMaiz]);
 
     const [isDataMaiz, setIsDataMaiz] = useState([]);
     useEffect(() => {
@@ -332,7 +297,6 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        console.log("isDataMaiz: ", isDataMaiz)
     }, [infoMaiz]);
     /*------------------Fin DataMaiz----------------------*/
 
@@ -341,8 +305,8 @@ export const GraficoCerealEntregado = () => {
         console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../gra_analisisSoja.php", {
-        fetch("http://10.0.0.28/tati/modulos/gra_analisisOtrosGranos.php", {
+        fetch("../gra_analisisOtrosGranos.php", {
+        // fetch("http://10.0.0.28/tati/modulos/gra_analisisOtrosGranos.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -369,7 +333,7 @@ export const GraficoCerealEntregado = () => {
     useEffect(() => {
         console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
-        InfoDataSoja(idCliente);
+        InfoDataOtrosGranos(idCliente);
         console.log("infoOtrosGranos2: ", infoOtrosGranos);
         console.log("isDataOtrosGranos3: ", isDataOtrosGranos)
     }, [idCliente]);
@@ -421,19 +385,6 @@ export const GraficoCerealEntregado = () => {
 
 
 
-
-    const handleOnChange = (key) => {
-        console.log(infoTotal);
-        setActiveKey(key);
-        // console.log("isDataTotal: ", isDataTotal)
-    };
-
-
-
-
-
-
-
     // const CustomTooltip = ({ active, payload, label }) => {
     //     //PAARA VER AMBAS BARRAS
     //     <div className="custom-tooltip" style={{ border: "3px solid grey", backgroundColor: "#FFFF", padding: "10px", borderRadius: "4px" }}>
@@ -461,34 +412,34 @@ export const GraficoCerealEntregado = () => {
     };
 
 
-    const total = [
+    // const total = [
 
-        {
-            "cosecha": "1718",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "1819",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "1920",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "2021",
-            "Entregadas": "0",
-            "Encuesta": "66800"
-        }
+    //     {
+    //         "cosecha": "1718",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "1819",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "1920",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "2021",
+    //         "Entregadas": "0",
+    //         "Encuesta": "66800"
+    //     }
 
-    ]
+    // ]
 
-    const soja = [
-        { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
-    ]
+    // const soja = [
+    //     { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
+    // ]
 
 
     return (
@@ -518,10 +469,8 @@ export const GraficoCerealEntregado = () => {
                         >
                             {items.map((item) => (
                                 <TabPane
-                                    // disabled={tabDisabled} 
                                     key={item.key}
                                     tab={item.label}>
-                                    {/* {item.children} */}
                                 </TabPane>
                             ))}
                         </Tabs>
@@ -534,7 +483,6 @@ export const GraficoCerealEntregado = () => {
                             <ComposedChart
                                 width={500}
                                 height={250}
-                                // data={isDataSoja}
                                 data={
                                     // activeKey === '1' ? total : //isDataTotal
                                     //     activeKey === '2' ? soja : total //isDataSoja : isDataTotal
@@ -578,11 +526,6 @@ export const GraficoCerealEntregado = () => {
                                 ) : (
                                     <Line type="monotone" name="Encuesta" dataKey={0} stroke="#00b33b" strokeWidth={2} />
                                 )}
-
-                                {/* <Bar dataKey='Entregadas' barSize={50} fill="#8fd14a" legendType='circle'>
-                                    <LabelList dataKey="cosecha" position="bottom" />
-                                 </Bar>
-                                <Line type="monotone" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2} />  */}
                             </ComposedChart>
                         </ResponsiveContainer>
                 }
