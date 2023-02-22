@@ -160,7 +160,7 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", idCliente);
         // fetch("../gra_analisisSoja.php", {
-        fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+        fetch("http://10.0.0.28/tati/modulos/gra_analisisSoja.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -337,7 +337,7 @@ export const GraficoCerealEntregado = () => {
     /*------------------Fin DataMaiz----------------------*/
 
     /*------------------Inicio DataOtrosGranos----------------------*/
-    function InfoDataSoja(idCliente) {
+    function InfoDataOtrosGranos(idCliente) {
         console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
@@ -543,10 +543,10 @@ export const GraficoCerealEntregado = () => {
                                     // isDataOtrosGranos
 
                                     activeKey === '1' ? isDataTotal :
-                                    activeKey === '2' ? isDataSoja :
-                                    activeKey === '3' ? isDataTrigo : 
-                                    activeKey === '4' ? isDataMaiz : 
-                                    isDataOtrosGranos
+                                        activeKey === '2' ? isDataSoja :
+                                            activeKey === '3' ? isDataTrigo :
+                                                activeKey === '4' ? isDataMaiz :
+                                                    isDataOtrosGranos
                                 }
                                 margin={{
                                     top: 20,
