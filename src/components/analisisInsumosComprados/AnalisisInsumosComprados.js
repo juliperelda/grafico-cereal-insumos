@@ -14,6 +14,28 @@ const AGROQUIMICOS = " (1, 7, 8, 9)";
 const FERTILIZANTES = " (0)";
 const SEMILLAS = " (2, 3, 5, 6)";
 
+const items = [
+    {
+        key: '1',
+        label: `TOTAL`,
+        children: `TOTAL 1`,
+    },
+    {
+        key: '2',
+        label: `AGROQUIMICOS`,
+        children: `AGROQUIMICOS 2`,
+    },
+    {
+        key: '3',
+        label: `SEMILLAS`,
+        children: `SEMILLAS 3`,
+    },
+    {
+        key: '4',
+        label: `FERTILIZANTES`,
+        children: `FERTILIZANTES 4`,
+    },
+];
 
 export const AnalisisInsumosComprados = () => {
 
@@ -35,28 +57,6 @@ export const AnalisisInsumosComprados = () => {
 
     }, [isLoading])
 
-    const items = [
-        {
-            key: '1',
-            label: `TOTAL`,
-            children: `TOTAL 1`,
-        },
-        {
-            key: '2',
-            label: `AGROQUIMICOS`,
-            children: `AGROQUIMICOS 2`,
-        },
-        {
-            key: '3',
-            label: `SEMILLAS`,
-            children: `SEMILLAS 3`,
-        },
-        {
-            key: '4',
-            label: `FERTILIZANTES`,
-            children: `FERTILIZANTES 4`,
-        },
-    ];
 
     const {
         idCliente, //Probando
