@@ -105,9 +105,9 @@ export const AnalisisInsumosComprados = () => {
             setIsDataInsumoTotal(
                 infoInsumoTotal.map((item) => {
                     return {
-                        cosecha: item.acos_desc,
-                        Entregadas: item.kil,
-                        Encuesta: item.tt_est,
+                        cosecha: item.eje,
+                        Compra: item.imp2,
+                        Estimado: item.cos_est,
                     };
                 })
             );

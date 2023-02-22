@@ -88,7 +88,7 @@ export const GraficoCerealEntregado = () => {
     function InfoDataTotal(idCliente) {
         console.log("idCliente: ", idCliente)
         const data = new FormData();
-        data.append("idC", "2049");
+        data.append("idC", idCliente);
         // fetch("../com_graEvolucionData.php", {
         fetch("../gra_analisisTotal.php", {
         // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
