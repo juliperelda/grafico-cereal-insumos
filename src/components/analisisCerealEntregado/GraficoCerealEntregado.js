@@ -86,7 +86,7 @@ export const GraficoCerealEntregado = () => {
     /*------------------Inicio DataTotal----------------------*/
     //*Llama y trae los datos de la consulta php
     function InfoDataTotal(idCliente) {
-        console.log("idCliente: ", idCliente)
+        // console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         // fetch("../com_graEvolucionData.php", {
@@ -170,16 +170,16 @@ export const GraficoCerealEntregado = () => {
     }
 
     useEffect(() => {
-        console.log("idCliente: ", idCliente)
+        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataSoja(idCliente);
-        console.log("infoSoja2: ", infoSoja);
-        console.log("isDataSoja3: ", isDataSoja)
+        // console.log("infoSoja2: ", infoSoja);
+        // console.log("isDataSoja3: ", isDataSoja)
     }, [idCliente]);
 
     useEffect(() => {
-        console.log("infoSoja actualizado: ", infoSoja);
-        console.log("isDataSoja2: ", isDataSoja)
+        // console.log("infoSoja actualizado: ", infoSoja);
+        // console.log("isDataSoja2: ", isDataSoja)
     }, [infoSoja]);
 
     const [isDataSoja, setIsDataSoja] = useState([]);
@@ -195,14 +195,14 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        console.log("isDataSoja: ", isDataSoja)
+        // console.log("isDataSoja: ", isDataSoja)
     }, [infoSoja]);
     /*------------------Fin DataSoja----------------------*/
 
 
     /*------------------Inicio DataTrigo----------------------*/
     function InfoDataTrigo(idCliente) {
-        console.log("idCliente: ", idCliente)
+        // console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisTrigo.php", {
@@ -212,35 +212,35 @@ export const GraficoCerealEntregado = () => {
         }).then(function (response) {
             response.text().then((resp) => {
 
-                console.log("resp: ", resp);
+                // console.log("resp: ", resp);
                 // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                console.log("data: ", data);
+                // console.log("data: ", data);
 
                 // console.log("JSON.text(data): ", JSON.text(data));
-                console.log("JSON.parse(data): ", JSON.parse(data));
+                // console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoTrigo(objetoData);
-                console.log("objetoData: ", objetoData)
+                // console.log("objetoData: ", objetoData)
                 // console.log("data: ", data)
                 // console.log("infoTrigo: ", infoTrigo)
-                console.log("isDataTrigo4: ", isDataTrigo)
+                // console.log("isDataTrigo4: ", isDataTrigo)
             });
         });
         // console.log("infoTotal: ", infoTotal)
     }
 
     useEffect(() => {
-        console.log("idCliente: ", idCliente)
+        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataTrigo(idCliente);
-        console.log("infoTrigo2: ", infoTrigo);
-        console.log("isDataTrigo3: ", isDataTrigo)
+        // console.log("infoTrigo2: ", infoTrigo);
+        // console.log("isDataTrigo3: ", isDataTrigo)
     }, [idCliente]);
 
     useEffect(() => {
-        console.log("infoTrigo actualizado: ", infoTrigo);
-        console.log("isDataTrigo2: ", isDataTrigo)
+        // console.log("infoTrigo actualizado: ", infoTrigo);
+        // console.log("isDataTrigo2: ", isDataTrigo)
     }, [infoTrigo]);
 
     const [isDataTrigo, setIsDataTrigo] = useState([]);
@@ -256,7 +256,7 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        console.log("isDataTrigo: ", isDataTrigo)
+        // console.log("isDataTrigo: ", isDataTrigo)
     }, [infoTrigo]);
     /*------------------Fin DataTrigo----------------------*/
 
@@ -279,7 +279,7 @@ export const GraficoCerealEntregado = () => {
     }
 
     useEffect(() => {
-        console.log("idClienteMaiz: ", idCliente)
+        // console.log("idClienteMaiz: ", idCliente)
         // Llama a la función InfoDataMaiz cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataMaiz(idCliente);
     }, [idCliente]);
@@ -302,7 +302,7 @@ export const GraficoCerealEntregado = () => {
 
     /*------------------Inicio DataOtrosGranos----------------------*/
     function InfoDataOtrosGranos(idCliente) {
-        console.log("idCliente: ", idCliente)
+        // console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisOtrosGranos.php", {
@@ -312,35 +312,35 @@ export const GraficoCerealEntregado = () => {
         }).then(function (response) {
             response.text().then((resp) => {
 
-                console.log("resp: ", resp);
+                // console.log("resp: ", resp);
                 // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                console.log("data: ", data);
+                // console.log("data: ", data);
 
                 // console.log("JSON.text(data): ", JSON.text(data));
-                console.log("JSON.parse(data): ", JSON.parse(data));
+                // console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoSoja(objetoData);
-                console.log("objetoData: ", objetoData)
+                // console.log("objetoData: ", objetoData)
                 // console.log("data: ", data)
                 // console.log("infoOtrosGranos: ", infoOtrosGranos)
-                console.log("isDataOtrosGranos4: ", isDataOtrosGranos)
+                // console.log("isDataOtrosGranos4: ", isDataOtrosGranos)
             });
         });
         // console.log("infoOtrosGranos: ", infoOtrosGranos)
     }
 
     useEffect(() => {
-        console.log("idCliente: ", idCliente)
+        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataOtrosGranos(idCliente);
-        console.log("infoOtrosGranos2: ", infoOtrosGranos);
-        console.log("isDataOtrosGranos3: ", isDataOtrosGranos)
+        // console.log("infoOtrosGranos2: ", infoOtrosGranos);
+        // console.log("isDataOtrosGranos3: ", isDataOtrosGranos)
     }, [idCliente]);
 
     useEffect(() => {
-        console.log("infoOtrosGranos actualizado: ", infoOtrosGranos);
-        console.log("isDataOtrosGranos2: ", isDataOtrosGranos)
+        // console.log("infoOtrosGranos actualizado: ", infoOtrosGranos);
+        // console.log("isDataOtrosGranos2: ", isDataOtrosGranos)
     }, [infoOtrosGranos]);
 
     const [isDataOtrosGranos, setIsDataOtrosGranos] = useState([]);
@@ -356,7 +356,7 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        console.log("isDataOtrosGranos: ", isDataOtrosGranos)
+        // console.log("isDataOtrosGranos: ", isDataOtrosGranos)
     }, [infoOtrosGranos]);
     /*------------------Fin DataOtrosGranos----------------------*/
 
