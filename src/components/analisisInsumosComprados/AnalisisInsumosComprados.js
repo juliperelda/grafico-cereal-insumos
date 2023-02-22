@@ -78,7 +78,7 @@ export const AnalisisInsumosComprados = () => {
 
     /*------------------Inicio DataTotal----------------------*/
     //*Llama y trae los datos de la consulta php
-    function InfoInsumoTotal(idCliente) {
+    function InfoInsumosTotales(idCliente) {
         console.log(idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
@@ -94,14 +94,14 @@ export const AnalisisInsumosComprados = () => {
                 var objetoData = JSON.parse(data);
                 console.log("objetoData",objetoData)
                 setInfoInsumoTotal(objetoData);
-                console.log("setInfoInsumoTotal", setInfoInsumoTotal)
+                console.log("setInfoInsumoTotal", infoInsumoTotal)
             });
         });
     }
 
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
-        InfoInsumoTotal(idCliente);
+        InfoInsumosTotales(idCliente);
         console.log("setInfoInsumoTotal", setInfoInsumoTotal)
     }, [idCliente]);
 
@@ -128,7 +128,7 @@ export const AnalisisInsumosComprados = () => {
 
     /*------------------Inicio DataAgroquimicos----------------------*/
     //*Llama y trae los datos de la consulta php
-    function InfoInsumoAgroquimicos(idCliente) {
+    function InfoInsumosAgroquimicos(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_insumoAgroquimicos.php", {
@@ -146,7 +146,7 @@ export const AnalisisInsumosComprados = () => {
 
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
-        InfoInsumoAgroquimicos(idCliente);
+        InfoInsumosAgroquimicos(idCliente);
     }, [idCliente]);
 
     const [isDataInsumoAgroquimicos, setIsDataInsumoAgroquimicos] = useState([]);
@@ -167,7 +167,7 @@ export const AnalisisInsumosComprados = () => {
 
     /*------------------Inicio DataSemillas----------------------*/
     //*Llama y trae los datos de la consulta php
-    function InfoInsumoSemillas(idCliente) {
+    function InfoInsumosSemillas(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_insumoSemillas.php", {
@@ -185,7 +185,7 @@ export const AnalisisInsumosComprados = () => {
 
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
-        InfoInsumoSemillas(idCliente);
+        InfoInsumosSemillas(idCliente);
     }, [idCliente]);
 
     const [isDataInsumoSemillas, setIsDataInsumoSemillas] = useState([]);
@@ -206,7 +206,7 @@ export const AnalisisInsumosComprados = () => {
 
     /*------------------Inicio DataFertilizantes----------------------*/
     //*Llama y trae los datos de la consulta php
-    function InfoInsumoFertilizantes(idCliente) {
+    function InfoInsumosFertilizantes(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_insumoFertilizantes.php", {
@@ -224,7 +224,7 @@ export const AnalisisInsumosComprados = () => {
 
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
-        InfoInsumoFertilizantes(idCliente);
+        InfoInsumosFertilizantes(idCliente);
     }, [idCliente]);
 
     const [isDataInsumoFertilizantes, setIsDataInsumoFertilizantes] = useState([]);
