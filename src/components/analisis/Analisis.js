@@ -1,6 +1,6 @@
 import { Card } from 'antd';
 import React from 'react';
-import { GraficoCerealEntregado } from '../analisisCerealEntregado/GraficoCerealEntregado'
+import { GraficoCerealEntregado } from '../analisisCerealEntregado/GraficoCerealEntregado';
 import { AnalisisInsumosComprados } from '../analisisInsumosComprados/AnalisisInsumosComprados';
 import "./analisis.css";
 export const Analisis = () => {

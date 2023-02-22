@@ -1,9 +1,9 @@
-import { Spin, Tabs } from 'antd'
-import TabPane from 'antd/es/tabs/TabPane'
-import React, { useContext, useEffect, useState } from 'react'
-import { Area, Bar, CartesianGrid, ComposedChart, LabelList, Legend, Line, LineChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
-import { GlobalContext } from '../../context/GlobalContext'
-import './analisisInsumosComprados.css'
+import React, { useContext, useEffect, useState } from 'react';
+import { Spin, Tabs } from 'antd';
+import TabPane from 'antd/es/tabs/TabPane';
+import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { GlobalContext } from '../../context/GlobalContext';
+import './analisisInsumosComprados.css';
 
 
 // [SCORING]
@@ -324,7 +324,7 @@ export const AnalisisInsumosComprados = () => {
                             }}
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
-                            <XAxis dataKey="cosecha" tick={() => null} scale="band" />
+                            <XAxis dataKey="cosecha" tick={() => null} />
                             <YAxis tick={{ fontSize: 11 }} />
                             <Tooltip />
                             <Legend

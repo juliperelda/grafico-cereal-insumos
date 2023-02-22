@@ -1,5 +1,5 @@
-import './App.css'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './App.css';
 import { GlobalContext } from "./context/GlobalContext";
 import { Analisis } from './components/analisis/Analisis';
 

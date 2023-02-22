@@ -1,9 +1,9 @@
+import React, { useContext, useEffect, useState } from 'react';
 import { Spin, Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
-import React, { useContext, useEffect, useState } from 'react'
 import { CartesianGrid, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, ComposedChart, Line, Bar, LabelList } from 'recharts';
 import { GlobalContext } from '../../context/GlobalContext';
-import './graficoCerealEntregado.css'
+import './graficoCerealEntregado.css';
 
 
 // [SCORING]
@@ -250,7 +250,7 @@ export const GraficoCerealEntregado = () => {
             response.text().then((resp) => {
                 const data = resp.substring(resp.indexOf('['));
                 var objetoData = JSON.parse(data);
-                setInfoSoja(objetoData);
+                setInfoOtrosGranos(objetoData);
             });
         });
     }
