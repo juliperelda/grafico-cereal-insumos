@@ -103,6 +103,7 @@ export const AnalisisInsumosComprados = () => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
         InfoInsumosTotales(idCliente);
         console.log("setInfoInsumoTotal", setInfoInsumoTotal)
+        console.log("infoInsumoTotal1", infoInsumoTotal)
     }, [idCliente]);
 
     useEffect(() => {
@@ -123,6 +124,7 @@ export const AnalisisInsumosComprados = () => {
                 })
             );
         }
+        console.log("isDataInsumoTotal", isDataInsumoTotal)
     }, [infoInsumoTotal]);
     /*------------------Fin DataTotal----------------------*/
 
@@ -343,12 +345,12 @@ export const AnalisisInsumosComprados = () => {
                             />
 
                             {isValorCompra ? (
-                                <Bar dataKey='Compra U$S' name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
+                                <Bar dataKey='Compra' name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
                             ) : (
                                 <Bar dataKey={0} name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
                             )}
                             {isValorEstimado ? (
-                                <Line type="monotone" name="Estimado U$S" dataKey='Estimado U$S' stroke="#32586E" />
+                                <Line type="monotone" name="Estimado U$S" dataKey='Estimado' stroke="#32586E" />
                             ) : (
                                 <Line type="monotone" name="Estimado U$S" dataKey={0} stroke="#32586E" />
                             )}
