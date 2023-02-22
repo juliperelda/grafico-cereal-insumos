@@ -79,7 +79,6 @@ export const AnalisisInsumosComprados = () => {
     /*------------------Inicio DataTotal----------------------*/
     //*Llama y trae los datos de la consulta php
     function InfoInsumosTotales(idCliente) {
-        console.log(idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_insumoTotal.php", {
@@ -88,13 +87,9 @@ export const AnalisisInsumosComprados = () => {
             body: data,
         }).then(function (response) {
             response.text().then((resp) => {
-                console.log("resp", resp)
                 const data = resp.substring(resp.indexOf('['));
-                console.log("data", data)
                 var objetoData = JSON.parse(data);
-                console.log("objetoData", objetoData)
                 setInfoInsumoTotal(objetoData);
-                console.log("setInfoInsumoTotal", infoInsumoTotal)
             });
         });
     }
@@ -102,14 +97,7 @@ export const AnalisisInsumosComprados = () => {
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
         InfoInsumosTotales(idCliente);
-        console.log("setInfoInsumoTotal", setInfoInsumoTotal)
-        console.log("infoInsumoTotal1", infoInsumoTotal)
     }, [idCliente]);
-
-    useEffect(() => {
-        console.log("infoTotal actualizado: ", infoInsumoTotal);
-        console.log("isDataInsumoTotal2: ", isDataInsumoTotal)
-    }, [infoInsumoTotal]);
 
     const [isDataInsumoTotal, setIsDataInsumoTotal] = useState([]);
     useEffect(() => {
@@ -124,7 +112,6 @@ export const AnalisisInsumosComprados = () => {
                 })
             );
         }
-        console.log("isDataInsumoTotal", isDataInsumoTotal)
     }, [infoInsumoTotal]);
     /*------------------Fin DataTotal----------------------*/
 
