@@ -92,7 +92,7 @@ export const AnalisisInsumosComprados = () => {
                 const data = resp.substring(resp.indexOf('['));
                 console.log("data", data)
                 var objetoData = JSON.parse(data);
-                console.log("objetoData",objetoData)
+                console.log("objetoData", objetoData)
                 setInfoInsumoTotal(objetoData);
                 console.log("setInfoInsumoTotal", infoInsumoTotal)
             });
@@ -108,7 +108,7 @@ export const AnalisisInsumosComprados = () => {
 
     useEffect(() => {
         console.log("infoTotal actualizado: ", infoInsumoTotal);
-        console.log("isDataInsumoTotal2: ",isDataInsumoTotal)
+        console.log("isDataInsumoTotal2: ", isDataInsumoTotal)
     }, [infoInsumoTotal]);
 
     const [isDataInsumoTotal, setIsDataInsumoTotal] = useState([]);
@@ -347,12 +347,12 @@ export const AnalisisInsumosComprados = () => {
                             {isValorCompra ? (
                                 <Bar dataKey='Compra' name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
                             ) : (
-                                <Bar dataKey={0} name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
+                                <Bar dataKey={0} name="Compra U$S" barSize={20} fill="#d8d8d8" legendType='circle' />
                             )}
                             {isValorEstimado ? (
                                 <Line type="monotone" name="Estimado U$S" dataKey='Estimado' stroke="#32586E" />
                             ) : (
-                                <Line type="monotone" name="Estimado U$S" dataKey={0} stroke="#32586E" />
+                                <Line type="monotone" name="Estimado U$S" dataKey={0} stroke="#d8d8d8" />
                             )}
                         </ComposedChart>
                     </ResponsiveContainer>

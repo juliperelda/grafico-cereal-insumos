@@ -86,51 +86,26 @@ export const GraficoCerealEntregado = () => {
     /*------------------Inicio DataTotal----------------------*/
     //*Llama y trae los datos de la consulta php
     function InfoDataTotal(idCliente) {
-        // console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
-        // fetch("../com_graEvolucionData.php", {
         fetch("../gra_analisisTotal.php", {
         // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
             response.text().then((resp) => {
-
-                // console.log("resp: ", resp);
-                // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                // console.log("data: ", data);
-
-                // console.log("JSON.text(data): ", JSON.text(data));
-                // console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoTotal(objetoData);
-                // console.log("objetoData: ", objetoData)
-                // console.log("data: ", data)
-                // console.log("infoTotal: ", infoTotal)
-                // console.log("isDataTotal4: ", isDataTotal)
             });
         });
-        // console.log("infoTotal: ", infoTotal)
     }
 
     useEffect(() => {
-        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataTotal(idCliente);
-        // console.log("infoTotal2: ", infoTotal);
-        // console.log("isDataTotal3: ", isDataTotal)
     }, [idCliente]);
 
-    useEffect(() => {
-        // console.log("infoTotal actualizado: ", infoTotal);
-        // console.log("isDataTotal2: ",isDataTotal)
-    }, [infoTotal]);
-
-
-    // infoEvo.kil = TT Entregadas
-    // infoEvo.tt_est = TT Encuesta
     const [isDataTotal, setIsDataTotal] = useState([]);
     useEffect(() => {
         if (infoTotal.length > 0) {
@@ -144,13 +119,8 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        // console.log("isDataTotal: ", isDataTotal)
     }, [infoTotal]);
     /*------------------Fin DataTotal----------------------*/
-
-
-
-
 
     /*------------------Inicio DataSoja----------------------*/
     function InfoDataSoja(idCliente) {
@@ -170,17 +140,9 @@ export const GraficoCerealEntregado = () => {
     }
 
     useEffect(() => {
-        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataSoja(idCliente);
-        // console.log("infoSoja2: ", infoSoja);
-        // console.log("isDataSoja3: ", isDataSoja)
     }, [idCliente]);
-
-    useEffect(() => {
-        // console.log("infoSoja actualizado: ", infoSoja);
-        // console.log("isDataSoja2: ", isDataSoja)
-    }, [infoSoja]);
 
     const [isDataSoja, setIsDataSoja] = useState([]);
     useEffect(() => {
@@ -195,14 +157,12 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        // console.log("isDataSoja: ", isDataSoja)
     }, [infoSoja]);
     /*------------------Fin DataSoja----------------------*/
 
 
     /*------------------Inicio DataTrigo----------------------*/
     function InfoDataTrigo(idCliente) {
-        // console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisTrigo.php", {
@@ -211,37 +171,17 @@ export const GraficoCerealEntregado = () => {
             body: data,
         }).then(function (response) {
             response.text().then((resp) => {
-
-                // console.log("resp: ", resp);
-                // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                // console.log("data: ", data);
-
-                // console.log("JSON.text(data): ", JSON.text(data));
-                // console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoTrigo(objetoData);
-                // console.log("objetoData: ", objetoData)
-                // console.log("data: ", data)
-                // console.log("infoTrigo: ", infoTrigo)
-                // console.log("isDataTrigo4: ", isDataTrigo)
             });
         });
-        // console.log("infoTotal: ", infoTotal)
     }
 
     useEffect(() => {
-        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataTrigo(idCliente);
-        // console.log("infoTrigo2: ", infoTrigo);
-        // console.log("isDataTrigo3: ", isDataTrigo)
     }, [idCliente]);
-
-    useEffect(() => {
-        // console.log("infoTrigo actualizado: ", infoTrigo);
-        // console.log("isDataTrigo2: ", isDataTrigo)
-    }, [infoTrigo]);
 
     const [isDataTrigo, setIsDataTrigo] = useState([]);
     useEffect(() => {
@@ -256,7 +196,6 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        // console.log("isDataTrigo: ", isDataTrigo)
     }, [infoTrigo]);
     /*------------------Fin DataTrigo----------------------*/
 
@@ -279,7 +218,6 @@ export const GraficoCerealEntregado = () => {
     }
 
     useEffect(() => {
-        // console.log("idClienteMaiz: ", idCliente)
         // Llama a la función InfoDataMaiz cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataMaiz(idCliente);
     }, [idCliente]);
@@ -302,7 +240,6 @@ export const GraficoCerealEntregado = () => {
 
     /*------------------Inicio DataOtrosGranos----------------------*/
     function InfoDataOtrosGranos(idCliente) {
-        // console.log("idCliente: ", idCliente)
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisOtrosGranos.php", {
@@ -311,37 +248,17 @@ export const GraficoCerealEntregado = () => {
             body: data,
         }).then(function (response) {
             response.text().then((resp) => {
-
-                // console.log("resp: ", resp);
-                // const data = resp;
                 const data = resp.substring(resp.indexOf('['));
-                // console.log("data: ", data);
-
-                // console.log("JSON.text(data): ", JSON.text(data));
-                // console.log("JSON.parse(data): ", JSON.parse(data));
                 var objetoData = JSON.parse(data);
                 setInfoSoja(objetoData);
-                // console.log("objetoData: ", objetoData)
-                // console.log("data: ", data)
-                // console.log("infoOtrosGranos: ", infoOtrosGranos)
-                // console.log("isDataOtrosGranos4: ", isDataOtrosGranos)
             });
         });
-        // console.log("infoOtrosGranos: ", infoOtrosGranos)
     }
 
     useEffect(() => {
-        // console.log("idCliente: ", idCliente)
         // Llama a la función InfoDataSoja cuando el componente se monta y cuando el ID del cliente cambia.
         InfoDataOtrosGranos(idCliente);
-        // console.log("infoOtrosGranos2: ", infoOtrosGranos);
-        // console.log("isDataOtrosGranos3: ", isDataOtrosGranos)
     }, [idCliente]);
-
-    useEffect(() => {
-        // console.log("infoOtrosGranos actualizado: ", infoOtrosGranos);
-        // console.log("isDataOtrosGranos2: ", isDataOtrosGranos)
-    }, [infoOtrosGranos]);
 
     const [isDataOtrosGranos, setIsDataOtrosGranos] = useState([]);
     useEffect(() => {
@@ -356,7 +273,6 @@ export const GraficoCerealEntregado = () => {
                 })
             );
         }
-        // console.log("isDataOtrosGranos: ", isDataOtrosGranos)
     }, [infoOtrosGranos]);
     /*------------------Fin DataOtrosGranos----------------------*/
 
@@ -400,12 +316,12 @@ export const GraficoCerealEntregado = () => {
     const handleLegendClick = (x) => {
         console.log(x);
         console.log("click");
-        if (x.value === "Entregadas") {
+        if (x.value === "TT Entregadas") {
             console.log("seleccionaste Entregadas");
             setIsValorEntregadas(!isValorEntregadas);
         }
 
-        if (x.value === "Encuesta") {
+        if (x.value === "TT Encuesta") {
             console.log("seleccionaste Encuesta");
             setIsValorEncuesta(!isValorEncuesta);
         }
@@ -513,18 +429,18 @@ export const GraficoCerealEntregado = () => {
                                     onClick={(x) => handleLegendClick(x)}
                                 />
                                 {isValorEntregadas ? (
-                                    <Bar dataKey='Entregadas' name="Entregadas" barSize={50} fill="#8fd14a" legendType='circle'>
+                                    <Bar dataKey='Entregadas' name="TT Entregadas" barSize={50} fill="#8fd14a" legendType='circle'>
                                         <LabelList dataKey="cosecha" position="bottom" />
                                     </Bar>
                                 ) : (
-                                    <Bar dataKey={0} name="Entregadas" barSize={50} fill="#8fd14a" legendType='circle'>
+                                    <Bar dataKey={0} name="TT Entregadas" barSize={50} fill="#d8d8d8" legendType='circle'>
                                         <LabelList dataKey="cosecha" position="bottom" />
                                     </Bar>
                                 )}
                                 {isValorEncuesta ? (
-                                    <Line type="monotone" name="Encuesta" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2} />
+                                    <Line type="monotone" name="TT Encuesta" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2}/>
                                 ) : (
-                                    <Line type="monotone" name="Encuesta" dataKey={0} stroke="#00b33b" strokeWidth={2} />
+                                    <Line type="monotone" name="TT Encuesta" dataKey={0} stroke="#d8d8d8" strokeWidth={2}/>
                                 )}
                             </ComposedChart>
                         </ResponsiveContainer>

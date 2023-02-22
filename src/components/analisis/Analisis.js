@@ -11,7 +11,7 @@ export const Analisis = () => {
                     <h1 className="titulos">ANALISIS CEREAL ENTREGADO</h1>
                     <GraficoCerealEntregado />
                 </Card>
-                <Card className="cardGraficoInsumosComprados" style={{ width: "100%", height: "300px" }}>
+                <Card className="cardGraficoInsumosComprados" style={{ width: "100%", height: "350px" }}>
                     <h1 className="titulos">ANALISIS INSUMOS COMPRADOS</h1>
                     <AnalisisInsumosComprados />
                 </Card>
