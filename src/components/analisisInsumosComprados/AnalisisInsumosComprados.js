@@ -325,7 +325,7 @@ export const AnalisisInsumosComprados = () => {
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
                             <XAxis dataKey="cosecha" tick={() => null} />
-                            <YAxis tick={{ fontSize: 11 }} />
+                            <YAxis tick={{ fontSize: 11 }} scale="log" />
                             <Tooltip />
                             <Legend
                                 onClick={(x) => handleLegendClick(x)}
