@@ -157,9 +157,9 @@ export const AnalisisInsumosComprados = () => {
             setIsDataInsumoAgroquimicos(
                 infoInsumoAgroquimicos.map((item) => {
                     return {
-                        cosecha: item.acos_desc,
-                        Entregadas: item.kil,
-                        Encuesta: item.tt_est,
+                        cosecha: item.eje,
+                        Compra: item.imp2,
+                        Estimado: item.cos_est,
                     };
                 })
             );
@@ -196,9 +196,9 @@ export const AnalisisInsumosComprados = () => {
             setIsDataInsumoSemillas(
                 infoInsumoSemillas.map((item) => {
                     return {
-                        cosecha: item.acos_desc,
-                        Entregadas: item.kil,
-                        Encuesta: item.tt_est,
+                        cosecha: item.eje,
+                        Compra: item.imp2,
+                        Estimado: item.cos_est,
                     };
                 })
             );
@@ -235,9 +235,9 @@ export const AnalisisInsumosComprados = () => {
             setIsDataInsumoFertilizantes(
                 infoInsumoFertilizantes.map((item) => {
                     return {
-                        cosecha: item.acos_desc,
-                        Entregadas: item.kil,
-                        Encuesta: item.tt_est,
+                        cosecha: item.eje,
+                        Compra: item.imp2,
+                        Estimado: item.cos_est,
                     };
                 })
             );
@@ -338,7 +338,7 @@ export const AnalisisInsumosComprados = () => {
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
                             <XAxis dataKey="cosecha" tick={() => null} scale="band" />
-                            <YAxis />
+                            <YAxis tick={{ fontSize: 11 }} />
                             <Tooltip />
                             <Legend
                                 onClick={(x) => handleLegendClick(x)}
