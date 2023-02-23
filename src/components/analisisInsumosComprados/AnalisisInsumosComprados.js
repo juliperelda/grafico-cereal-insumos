@@ -230,6 +230,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
+                        Porcentaje: item.imp2 * 100 / item.cos_est  
                     };
                 })
             );
@@ -274,23 +275,26 @@ export const AnalisisInsumosComprados = () => {
 
     // const datin = [
 
-    //     { 
-    //         "cosecha": '1819', 
+    //     {
+    //         "cosecha": '1819',
     //         // "imp": '5696680', 
-    //         "Compra": '6890456', 
-    //         "Estimado": '11750000' 
+    //         "Compra": '6890456',
+    //         "Estimado": '11750000',
+    //         // "Porcentaje": datin.Compra * 100 / datin.Estimado
     //     },
-    //     { 
-    //         "cosecha": '1920', 
+    //     {
+    //         "cosecha": '1920',
     //         // "imp": '24502300', 
-    //         "Compra": '3670000', 
-    //         "Estimado": '9675000' 
+    //         "Compra": '3670000',
+    //         "Estimado": '9675000',
+    //         // "Porcentaje": datin.Compra * 100 / datin.Estimado
     //     },
-    //     { 
-    //         "cosecha": '2021', 
+    //     {
+    //         "cosecha": '2021',
     //         // "imp": '750000000', 
-    //         "Compra": '7589000', 
-    //         "Estimado": '9733350' 
+    //         "Compra": '7589000',
+    //         "Estimado": '9733350',
+    //         // "Porcentaje": datin.Compra * 100 / datin.Estimado
     //     }
     // ]
 
@@ -361,6 +365,7 @@ export const AnalisisInsumosComprados = () => {
                             {isValorCompra ? (
                                 <Bar dataKey='Compra' name="Compra U$S" barSize={50} fill="#4ed9fc" legendType='circle'>
                                     <LabelList dataKey="cosecha" position="bottom" />
+                                    <LabelList dataKey="Porcentaje" position="bottom" dy={13} />
                                 </Bar>
                             ) : (
                                 <Bar dataKey={0} name="Compra U$S" barSize={50} fill="#d8d8d8" legendType='circle'>
