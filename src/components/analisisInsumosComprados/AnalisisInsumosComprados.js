@@ -98,6 +98,8 @@ export const AnalisisInsumosComprados = () => {
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
         InfoInsumosTotales(idCliente);
+        console.log("infoInsumoTotal1: ", infoInsumoTotal )
+        console.log("isDataInsumoTotal1: ", isDataInsumoTotal )
     }, [idCliente]);
 
     const [isDataInsumoTotal, setIsDataInsumoTotal] = useState([]);
@@ -113,6 +115,8 @@ export const AnalisisInsumosComprados = () => {
                 })
             );
         }
+        console.log("infoInsumoTotal2: ", infoInsumoTotal )
+        console.log("isDataInsumoTotal2: ", isDataInsumoTotal )
     }, [infoInsumoTotal]);
     /*------------------Fin DataTotal----------------------*/
 
