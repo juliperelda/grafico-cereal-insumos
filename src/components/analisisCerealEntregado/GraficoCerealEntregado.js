@@ -115,7 +115,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
-                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
+                        Porcentaje: '(' + ((item.kil * 100 / item.tt_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -154,7 +154,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
-                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
+                        Porcentaje: '(' + ((item.kil * 100 / item.tt_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -194,7 +194,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
-                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
+                        Porcentaje: '(' + ((item.kil * 100 / item.tt_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -234,7 +234,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
-                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
+                        Porcentaje: '(' + ((item.kil * 100 / item.tt_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -273,7 +273,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
-                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
+                        Porcentaje: '(' + ((item.kil * 100 / item.tt_est).toFixed(0)) + '%)'
                     };
                 })
             );
