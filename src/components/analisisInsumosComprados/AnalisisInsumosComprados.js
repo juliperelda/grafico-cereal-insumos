@@ -90,7 +90,6 @@ export const AnalisisInsumosComprados = () => {
                 const data = resp.substring(resp.indexOf('['));
                 var objetoData = JSON.parse(data);
                 setInfoInsumoTotal(objetoData);
-                // console.log("objetoData", objetoData)
             });
         });
     }
@@ -98,8 +97,6 @@ export const AnalisisInsumosComprados = () => {
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
         InfoInsumosTotales(idCliente);
-        // console.log("infoInsumoTotal1: ", infoInsumoTotal)
-        // console.log("isDataInsumoTotal1: ", isDataInsumoTotal)
     }, [idCliente]);
 
     const [isDataInsumoTotal, setIsDataInsumoTotal] = useState([]);
