@@ -89,7 +89,7 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisTotal.php", {
-        // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -115,6 +115,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -127,7 +128,7 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisSoja.php", {
-        // fetch("http://10.0.0.28/tati/modulos/gra_analisisSoja.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisSoja.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -153,6 +154,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -166,7 +168,7 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisTrigo.php", {
-        // fetch("http://10.0.0.28/tati/modulos/gra_analisisTrigo.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisTrigo.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -192,6 +194,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -205,7 +208,7 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisMaiz.php", {
-        // fetch("http://10.0.0.28/tati/modulos/gra_analisisMaiz.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisMaiz.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -231,6 +234,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -243,7 +247,7 @@ export const GraficoCerealEntregado = () => {
         const data = new FormData();
         data.append("idC", idCliente);
         fetch("../gra_analisisOtrosGranos.php", {
-        // fetch("http://10.0.0.28/tati/modulos/gra_analisisOtrosGranos.php", {
+            // fetch("http://10.0.0.28/tati/modulos/gra_analisisOtrosGranos.php", {
             method: "POST",
             body: data,
         }).then(function (response) {
@@ -269,6 +273,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: item.kil,
                         Encuesta: item.tt_est,
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -328,30 +333,30 @@ export const GraficoCerealEntregado = () => {
     };
 
 
-    const total = [
+    // const total = [
 
-        {
-            "cosecha": "1718",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "1819",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "1920",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "2021",
-            "Entregadas": "0",
-            "Encuesta": "66800"
-        }
+    //     {
+    //         "cosecha": "1718",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "1819",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "1920",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "2021",
+    //         "Entregadas": "0",
+    //         "Encuesta": "66800"
+    //     }
 
-    ]
+    // ]
 
     // const soja = [
     //     { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
@@ -421,7 +426,7 @@ export const GraficoCerealEntregado = () => {
                             >
                                 <CartesianGrid vertical={false} horizontal={true} />
                                 <XAxis dataKey="cosecha" tick={() => null} />
-                                <YAxis tick={{ fontSize: 11 }} />
+                                <YAxis tick={{ fontSize: 11 }} label={{ value: 'TT', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} />
                                 <Tooltip
                                 // content={CustomTooltip}
                                 />
@@ -430,7 +435,8 @@ export const GraficoCerealEntregado = () => {
                                 />
                                 {isValorEntregadas ? (
                                     <Bar dataKey='Entregadas' name="TT Entregadas" barSize={50} fill="#8fd14a" legendType='circle'>
-                                        <LabelList dataKey="cosecha" position="bottom" />
+                                        <LabelList dataKey="cosecha" position="bottom" fontSize={13} />
+                                        <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13} />
                                     </Bar>
                                 ) : (
                                     <Bar dataKey={0} name="TT Entregadas" barSize={50} fill="#d8d8d8" legendType='circle'>
@@ -438,9 +444,9 @@ export const GraficoCerealEntregado = () => {
                                     </Bar>
                                 )}
                                 {isValorEncuesta ? (
-                                    <Line type="monotone" name="TT Encuesta" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2}/>
+                                    <Line type="monotone" name="TT Encuesta" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2} />
                                 ) : (
-                                    <Line type="monotone" name="TT Encuesta" dataKey={0} stroke="#d8d8d8" strokeWidth={2}/>
+                                    <Line type="monotone" name="TT Encuesta" dataKey={0} stroke="#d8d8d8" strokeWidth={2} />
                                 )}
                             </ComposedChart>
                         </ResponsiveContainer>

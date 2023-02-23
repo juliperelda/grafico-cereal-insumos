@@ -111,7 +111,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%'
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -153,7 +153,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%'
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -193,7 +193,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%'
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -233,7 +233,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%'
+                        Porcentaje: '(' + ((item.imp2 * 100 / item.cos_est).toFixed(0)) + '%)'
                     };
                 })
             );
@@ -359,7 +359,7 @@ export const AnalisisInsumosComprados = () => {
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
                             <XAxis dataKey="cosecha" tick={() => null} />
-                            <YAxis tick={{ fontSize: 11 }} />
+                            <YAxis tick={{ fontSize: 11 }} label={{ value: 'U$S', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px"}} />
                             <Tooltip />
                             <Legend
                                 onClick={(x) => handleLegendClick(x)}
@@ -367,8 +367,8 @@ export const AnalisisInsumosComprados = () => {
 
                             {isValorCompra ? (
                                 <Bar dataKey='Compra' name="Compra U$S" barSize={50} fill="#4ed9fc" legendType='circle'>
-                                    <LabelList dataKey="cosecha" position="bottom" />
-                                    <LabelList dataKey="Porcentaje" position="bottom" dy={13} />
+                                    <LabelList dataKey="cosecha" position="bottom" fontSize={13} />
+                                    <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13}/>
                                 </Bar>
                             ) : (
                                 <Bar dataKey={0} name="Compra U$S" barSize={50} fill="#d8d8d8" legendType='circle'>
