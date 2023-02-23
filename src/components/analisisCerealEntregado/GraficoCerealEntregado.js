@@ -113,12 +113,12 @@ export const GraficoCerealEntregado = () => {
                 infoTotal.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
+                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + porcentaje + '%)'
+                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
                     };
                 })
             );
@@ -155,12 +155,12 @@ export const GraficoCerealEntregado = () => {
                 infoSoja.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
+                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + porcentaje + '%)'
+                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
                     };
                 })
             );
@@ -198,12 +198,12 @@ export const GraficoCerealEntregado = () => {
                 infoTrigo.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
+                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + porcentaje + '%)'
+                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
                     };
                 })
             );
@@ -241,12 +241,12 @@ export const GraficoCerealEntregado = () => {
                 infoMaiz.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
+                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + porcentaje + '%)'
+                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
                     };
                 })
             );
@@ -283,12 +283,12 @@ export const GraficoCerealEntregado = () => {
                 infoOtrosGranos.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
+                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + porcentaje + '%)'
+                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
                     };
                 })
             );
