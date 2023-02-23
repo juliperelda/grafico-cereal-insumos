@@ -359,7 +359,7 @@ export const AnalisisInsumosComprados = () => {
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
                             <XAxis dataKey="cosecha" tick={() => null} />
-                            <YAxis tick={{ fontSize: 11 }} label={{ value: 'U$S', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px"}} />
+                            <YAxis tick={{ fontSize: 11 }} label={{ value: 'U$S', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} />
                             <Tooltip />
                             <Legend
                                 onClick={(x) => handleLegendClick(x)}
@@ -368,11 +368,12 @@ export const AnalisisInsumosComprados = () => {
                             {isValorCompra ? (
                                 <Bar dataKey='Compra' name="Compra U$S" barSize={50} fill="#4ed9fc" legendType='circle'>
                                     <LabelList dataKey="cosecha" position="bottom" fontSize={13} />
-                                    <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13}/>
+                                    <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13} />
                                 </Bar>
                             ) : (
                                 <Bar dataKey={0} name="Compra U$S" barSize={50} fill="#d8d8d8" legendType='circle'>
-                                    <LabelList dataKey="cosecha" position="bottom" />
+                                    <LabelList dataKey="cosecha" position="bottom" fontSize={13} />
+                                    <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13} />
                                 </Bar>
                             )}
                             {isValorEstimado ? (
