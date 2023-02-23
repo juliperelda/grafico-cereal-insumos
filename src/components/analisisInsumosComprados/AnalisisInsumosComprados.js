@@ -111,6 +111,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
+                        Porcentaje: item.imp2 * 100 / item.cos_est  
                     };
                 })
             );
@@ -152,6 +153,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
+                        Porcentaje: item.imp2 * 100 / item.cos_est  
                     };
                 })
             );
@@ -191,6 +193,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
+                        Porcentaje: item.imp2 * 100 / item.cos_est  
                     };
                 })
             );
