@@ -328,34 +328,34 @@ export const GraficoCerealEntregado = () => {
     };
 
 
-    const total = [
+    // const total = [
 
-        {
-            "cosecha": "1718",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "1819",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "1920",
-            "Entregadas": "89000",
-            "Encuesta": "0"
-        },
-        {
-            "cosecha": "2021",
-            "Entregadas": "0",
-            "Encuesta": "66800"
-        }
+    //     {
+    //         "cosecha": "1718",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "1819",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "1920",
+    //         "Entregadas": "89000",
+    //         "Encuesta": "0"
+    //     },
+    //     {
+    //         "cosecha": "2021",
+    //         "Entregadas": "0",
+    //         "Encuesta": "66800"
+    //     }
 
-    ]
+    // ]
 
-    const soja = [
-        { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
-    ]
+    // const soja = [
+    //     { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
+    // ]
 
 
     return (
@@ -400,17 +400,17 @@ export const GraficoCerealEntregado = () => {
                                 width={500}
                                 height={250}
                                 data={
-                                    activeKey === '1' ? total : //isDataTotal
-                                        activeKey === '2' ? soja : total //isDataSoja : isDataTotal
+                                    // activeKey === '1' ? total : //isDataTotal
+                                    //     activeKey === '2' ? soja : total //isDataSoja : isDataTotal
                                     // activeKey === '3' ? isDataTrigo : 
                                     // activeKey === '4' ? isDataMaiz : 
                                     // isDataOtrosGranos
 
-                                    // activeKey === '1' ? isDataTotal :
-                                    //     activeKey === '2' ? isDataSoja :
-                                    //         activeKey === '3' ? isDataTrigo :
-                                    //             activeKey === '4' ? isDataMaiz :
-                                    //                 isDataOtrosGranos
+                                    activeKey === '1' ? isDataTotal :
+                                        activeKey === '2' ? isDataSoja :
+                                            activeKey === '3' ? isDataTrigo :
+                                                activeKey === '4' ? isDataMaiz :
+                                                    isDataOtrosGranos
                                 }
                                 margin={{
                                     top: 20,

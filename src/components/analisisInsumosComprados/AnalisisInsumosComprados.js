@@ -90,6 +90,7 @@ export const AnalisisInsumosComprados = () => {
                 const data = resp.substring(resp.indexOf('['));
                 var objetoData = JSON.parse(data);
                 setInfoInsumoTotal(objetoData);
+                console.log("objetoData", objetoData)
             });
         });
     }
@@ -325,7 +326,7 @@ export const AnalisisInsumosComprados = () => {
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
                             <XAxis dataKey="cosecha" tick={() => null} />
-                            <YAxis tick={{ fontSize: 11 }} scale="log" />
+                            <YAxis tick={{ fontSize: 11 }} />
                             <Tooltip />
                             <Legend
                                 onClick={(x) => handleLegendClick(x)}
