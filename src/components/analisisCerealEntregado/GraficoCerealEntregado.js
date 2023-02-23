@@ -455,7 +455,8 @@ export const GraficoCerealEntregado = () => {
                                     </Bar>
                                 ) : (
                                     <Bar dataKey={0} name="TT Entregadas" barSize={50} fill="#d8d8d8" legendType='circle'>
-                                        <LabelList dataKey="cosecha" position="bottom" />
+                                        <LabelList dataKey="cosecha" position="bottom" fontSize={13} />
+                                        <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13} />
                                     </Bar>
                                 )}
                                 {isValorEncuesta ? (
