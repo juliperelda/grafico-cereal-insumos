@@ -118,7 +118,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
+                        Porcentaje: '(' + (parseInt(item.tt_est) !== 0 ? ((parseInt(item.kil) * 100 / parseInt(item.tt_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
@@ -160,7 +160,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
+                        Porcentaje: '(' + (parseInt(item.tt_est) !== 0 ? ((parseInt(item.kil) * 100 / parseInt(item.tt_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
@@ -203,7 +203,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
+                        Porcentaje: '(' + (parseInt(item.tt_est) !== 0 ? ((parseInt(item.kil) * 100 / parseInt(item.tt_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
@@ -246,7 +246,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
+                        Porcentaje: '(' + (parseInt(item.tt_est) !== 0 ? ((parseInt(item.kil) * 100 / parseInt(item.tt_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
@@ -288,7 +288,7 @@ export const GraficoCerealEntregado = () => {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
                         Encuesta: encuesta,
-                        Porcentaje: '(' + (item.tt_est !== 0 ? ((item.kil * 100 / item.tt_est).toFixed(0)) + '%' : '0%') + ')'
+                        Porcentaje: '(' + (parseInt(item.tt_est) !== 0 ? ((parseInt(item.kil) * 100 / parseInt(item.tt_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
