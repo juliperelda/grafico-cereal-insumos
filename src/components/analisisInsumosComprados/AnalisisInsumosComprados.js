@@ -111,7 +111,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: '(' + (parseInt(item.imp2) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
+                        Porcentaje: '(' + (parseInt(item.cos_est) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
@@ -153,7 +153,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: '(' + (parseInt(item.imp2) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
+                        Porcentaje: '(' + (parseInt(item.cos_est) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
@@ -193,13 +193,13 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: '(' + (parseInt(item.imp2) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
+                        Porcentaje: '(' + (parseInt(item.cos_est) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
         }
     }, [infoInsumoSemillas]);
-    /*------------------Fin DataAgroquimicos----------------------*/
+    /*------------------Fin DataSemillas----------------------*/
 
     /*------------------Inicio DataFertilizantes----------------------*/
     //*Llama y trae los datos de la consulta php
@@ -233,7 +233,7 @@ export const AnalisisInsumosComprados = () => {
                         cosecha: item.eje,
                         Compra: item.imp2,
                         Estimado: item.cos_est,
-                        Porcentaje: '(' + (parseInt(item.imp2) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
+                        Porcentaje: '(' + (parseInt(item.cos_est) !== 0 ? ((parseInt(item.imp2) * 100 / parseInt(item.cos_est)).toFixed(0)) : 0) + '%)'
                     };
                 })
             );
