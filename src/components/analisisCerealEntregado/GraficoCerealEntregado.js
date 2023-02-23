@@ -410,12 +410,12 @@ export const GraficoCerealEntregado = () => {
                                     // activeKey === '3' ? isDataTrigo : 
                                     // activeKey === '4' ? isDataMaiz : 
                                     // isDataOtrosGranos
-                                    total
-                                    // activeKey === '1' ? isDataTotal :
-                                    //     activeKey === '2' ? isDataSoja :
-                                    //         activeKey === '3' ? isDataTrigo :
-                                    //             activeKey === '4' ? isDataMaiz :
-                                    //                 isDataOtrosGranos
+                                    // total
+                                    activeKey === '1' ? isDataTotal :
+                                        activeKey === '2' ? isDataSoja :
+                                            activeKey === '3' ? isDataTrigo :
+                                                activeKey === '4' ? isDataMaiz :
+                                                    isDataOtrosGranos
                                 }
                                 margin={{
                                     top: 40,
