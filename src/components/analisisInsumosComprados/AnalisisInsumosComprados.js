@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Spin, Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
-import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, CartesianGrid, ComposedChart, LabelList, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { GlobalContext } from '../../context/GlobalContext';
 import './analisisInsumosComprados.css';
 
@@ -90,7 +90,7 @@ export const AnalisisInsumosComprados = () => {
                 const data = resp.substring(resp.indexOf('['));
                 var objetoData = JSON.parse(data);
                 setInfoInsumoTotal(objetoData);
-                console.log("objetoData", objetoData)
+                // console.log("objetoData", objetoData)
             });
         });
     }
@@ -98,8 +98,8 @@ export const AnalisisInsumosComprados = () => {
     useEffect(() => {
         // Llama a la función InfoDataTotal cuando el componente se monta y cuando el ID del cliente cambia.
         InfoInsumosTotales(idCliente);
-        console.log("infoInsumoTotal1: ", infoInsumoTotal )
-        console.log("isDataInsumoTotal1: ", isDataInsumoTotal )
+        // console.log("infoInsumoTotal1: ", infoInsumoTotal)
+        // console.log("isDataInsumoTotal1: ", isDataInsumoTotal)
     }, [idCliente]);
 
     const [isDataInsumoTotal, setIsDataInsumoTotal] = useState([]);
@@ -115,8 +115,8 @@ export const AnalisisInsumosComprados = () => {
                 })
             );
         }
-        console.log("infoInsumoTotal2: ", infoInsumoTotal )
-        console.log("isDataInsumoTotal2: ", isDataInsumoTotal )
+        // console.log("infoInsumoTotal2: ", infoInsumoTotal)
+        // console.log("isDataInsumoTotal2: ", isDataInsumoTotal)
     }, [infoInsumoTotal]);
     /*------------------Fin DataTotal----------------------*/
 
@@ -272,6 +272,27 @@ export const AnalisisInsumosComprados = () => {
         }
     };
 
+    // const datin = [
+
+    //     { 
+    //         "cosecha": '1819', 
+    //         // "imp": '5696680', 
+    //         "Compra": '6890456', 
+    //         "Estimado": '11750000' 
+    //     },
+    //     { 
+    //         "cosecha": '1920', 
+    //         // "imp": '24502300', 
+    //         "Compra": '3670000', 
+    //         "Estimado": '9675000' 
+    //     },
+    //     { 
+    //         "cosecha": '2021', 
+    //         // "imp": '750000000', 
+    //         "Compra": '7589000', 
+    //         "Estimado": '9733350' 
+    //     }
+    // ]
 
 
 
@@ -316,16 +337,17 @@ export const AnalisisInsumosComprados = () => {
                             width={500}
                             height={250}
                             data={
+                                // datin
                                 activeKey === '1' ? isDataInsumoTotal :
                                     activeKey === '2' ? isDataInsumoAgroquimicos :
                                         activeKey === '3' ? isDataInsumoSemillas :
                                             isDataInsumoFertilizantes
                             }
                             margin={{
-                                top: 20,
-                                right: 20,
-                                bottom: 20,
-                                left: 20,
+                                top: 40,
+                                right: 40,
+                                bottom: 40,
+                                left: 40,
                             }}
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
@@ -337,14 +359,18 @@ export const AnalisisInsumosComprados = () => {
                             />
 
                             {isValorCompra ? (
-                                <Bar dataKey='Compra' name="Compra U$S" barSize={20} fill="#4ed9fc" legendType='circle' />
+                                <Bar dataKey='Compra' name="Compra U$S" barSize={50} fill="#4ed9fc" legendType='circle'>
+                                    <LabelList dataKey="cosecha" position="bottom" />
+                                </Bar>
                             ) : (
-                                <Bar dataKey={0} name="Compra U$S" barSize={20} fill="#d8d8d8" legendType='circle' />
+                                <Bar dataKey={0} name="Compra U$S" barSize={50} fill="#d8d8d8" legendType='circle'>
+                                    <LabelList dataKey="cosecha" position="bottom" />
+                                </Bar>
                             )}
                             {isValorEstimado ? (
-                                <Line type="monotone" name="Estimado U$S" dataKey='Estimado' stroke="#32586E" />
+                                <Line type="monotone" name="Estimado U$S" dataKey='Estimado' stroke="#32586E" strokeWidth={2} />
                             ) : (
-                                <Line type="monotone" name="Estimado U$S" dataKey={0} stroke="#d8d8d8" />
+                                <Line type="monotone" name="Estimado U$S" dataKey={0} stroke="#d8d8d8" strokeWidth={2} />
                             )}
                         </ComposedChart>
                     </ResponsiveContainer>

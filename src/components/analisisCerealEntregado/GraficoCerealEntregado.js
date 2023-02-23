@@ -328,30 +328,30 @@ export const GraficoCerealEntregado = () => {
     };
 
 
-    // const total = [
+    const total = [
 
-    //     {
-    //         "cosecha": "1718",
-    //         "Entregadas": "89000",
-    //         "Encuesta": "0"
-    //     },
-    //     {
-    //         "cosecha": "1819",
-    //         "Entregadas": "89000",
-    //         "Encuesta": "0"
-    //     },
-    //     {
-    //         "cosecha": "1920",
-    //         "Entregadas": "89000",
-    //         "Encuesta": "0"
-    //     },
-    //     {
-    //         "cosecha": "2021",
-    //         "Entregadas": "0",
-    //         "Encuesta": "66800"
-    //     }
+        {
+            "cosecha": "1718",
+            "Entregadas": "89000",
+            "Encuesta": "0"
+        },
+        {
+            "cosecha": "1819",
+            "Entregadas": "89000",
+            "Encuesta": "0"
+        },
+        {
+            "cosecha": "1920",
+            "Entregadas": "89000",
+            "Encuesta": "0"
+        },
+        {
+            "cosecha": "2021",
+            "Entregadas": "0",
+            "Encuesta": "66800"
+        }
 
-    // ]
+    ]
 
     // const soja = [
     //     { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
@@ -405,7 +405,7 @@ export const GraficoCerealEntregado = () => {
                                     // activeKey === '3' ? isDataTrigo : 
                                     // activeKey === '4' ? isDataMaiz : 
                                     // isDataOtrosGranos
-
+                                    // total
                                     activeKey === '1' ? isDataTotal :
                                         activeKey === '2' ? isDataSoja :
                                             activeKey === '3' ? isDataTrigo :
@@ -413,10 +413,10 @@ export const GraficoCerealEntregado = () => {
                                                     isDataOtrosGranos
                                 }
                                 margin={{
-                                    top: 20,
-                                    right: 20,
-                                    bottom: 20,
-                                    left: 20,
+                                    top: 40,
+                                    right: 40,
+                                    bottom: 40,
+                                    left: 40,
                                 }}
                             >
                                 <CartesianGrid vertical={false} horizontal={true} />
