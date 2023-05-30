@@ -38,6 +38,7 @@ const items = [
 ];
 
 export const AnalisisInsumosComprados = () => {
+    const URL = process.env.REACT_APP_URL;
 
     const [isLoading, setIsLoading] = useState(1);
 
@@ -81,7 +82,7 @@ export const AnalisisInsumosComprados = () => {
     function InfoInsumosTotales(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_insumoTotal.php", {
+        fetch(`${URL}gra_insumoTotal.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
@@ -123,7 +124,7 @@ export const AnalisisInsumosComprados = () => {
     function InfoInsumosAgroquimicos(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_insumoAgroquimicos.php", {
+        fetch(`${URL}gra_insumoAgroquimicos.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
@@ -163,7 +164,7 @@ export const AnalisisInsumosComprados = () => {
     function InfoInsumosSemillas(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_insumoSemillas.php", {
+        fetch(`${URL}gra_insumoSemillas.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
@@ -203,7 +204,7 @@ export const AnalisisInsumosComprados = () => {
     function InfoInsumosFertilizantes(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_insumoFertilizantes.php", {
+        fetch(`${URL}gra_insumoFertilizantes.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
@@ -298,7 +299,14 @@ export const AnalisisInsumosComprados = () => {
     //     }
     // ]
 
+    const allData = activeKey === '1' ? isDataInsumoTotal :
+        activeKey === '2' ? isDataInsumoAgroquimicos :
+            activeKey === '3' ? isDataInsumoSemillas :
+                isDataInsumoFertilizantes;
 
+    const barDataMax = Math.max(...allData.map(item => item.Compra));
+    const lineDataMax = Math.max(...allData.map(item => item.Estimado));
+    const combinedMax = Math.max(barDataMax, lineDataMax);
 
     return (
         <div className='divContainerPestañasInsumos'>
@@ -356,7 +364,8 @@ export const AnalisisInsumosComprados = () => {
                         >
                             <CartesianGrid vertical={false} horizontal={true} />
                             <XAxis dataKey="cosecha" tick={() => null} />
-                            <YAxis tick={{ fontSize: 11 }} label={{ value: 'U$S', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} />
+                            {/* <YAxis tick={{ fontSize: 11 }} label={{ value: 'U$S', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} /> */}
+                            <YAxis domain={[0, combinedMax]} tick={{ fontSize: 11 }} label={{ value: 'U$S', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} />
                             <Tooltip />
                             <Legend
                                 onClick={(x) => handleLegendClick(x)}

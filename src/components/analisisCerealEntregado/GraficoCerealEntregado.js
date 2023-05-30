@@ -5,15 +5,6 @@ import { CartesianGrid, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, Comp
 import { GlobalContext } from '../../context/GlobalContext';
 import './graficoCerealEntregado.css';
 
-
-// [SCORING]
-const TIPO = "nosis";
-
-// [ANALISIS_CEREAL]
-const TRIGO = 1;
-const MAIZ = 2;
-const SOJA = 5;
-
 const items = [
     {
         key: '1',
@@ -40,10 +31,11 @@ const items = [
         label: `OTROS GRANOS`,
         children: `Otros granos 5`,
     },
-
 ];
 
 export const GraficoCerealEntregado = () => {
+
+    const URL = process.env.REACT_APP_URL;
 
     const [isLoading, setIsLoading] = useState(1);
 
@@ -88,7 +80,7 @@ export const GraficoCerealEntregado = () => {
     function InfoDataTotal(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_analisisTotal.php", {
+        fetch(`${URL}gra_analisisTotal.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisTotal.php", {
             method: "POST",
             body: data,
@@ -113,7 +105,6 @@ export const GraficoCerealEntregado = () => {
                 infoTotal.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
@@ -130,7 +121,7 @@ export const GraficoCerealEntregado = () => {
     function InfoDataSoja(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_analisisSoja.php", {
+        fetch(`${URL}gra_analisisSoja.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisSoja.php", {
             method: "POST",
             body: data,
@@ -155,7 +146,6 @@ export const GraficoCerealEntregado = () => {
                 infoSoja.map((item) => {
                     const entregadas = item.kil === 0 ? 0 : item.kil;
                     const encuesta = item.tt_est === 0 ? 0 : item.tt_est;
-                    // const porcentaje = encuesta === 0 ? 0 : ((entregadas * 100 / encuesta).toFixed(0));
                     return {
                         cosecha: item.acos_desc,
                         Entregadas: entregadas,
@@ -173,7 +163,7 @@ export const GraficoCerealEntregado = () => {
     function InfoDataTrigo(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_analisisTrigo.php", {
+        fetch(`${URL}gra_analisisTrigo.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisTrigo.php", {
             method: "POST",
             body: data,
@@ -216,7 +206,7 @@ export const GraficoCerealEntregado = () => {
     function InfoDataMaiz(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_analisisMaiz.php", {
+        fetch(`${URL}gra_analisisMaiz.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisMaiz.php", {
             method: "POST",
             body: data,
@@ -258,7 +248,7 @@ export const GraficoCerealEntregado = () => {
     function InfoDataOtrosGranos(idCliente) {
         const data = new FormData();
         data.append("idC", idCliente);
-        fetch("../gra_analisisOtrosGranos.php", {
+        fetch(`${URL}gra_analisisOtrosGranos.php`, {
             // fetch("http://10.0.0.28/tati/modulos/gra_analisisOtrosGranos.php", {
             method: "POST",
             body: data,
@@ -377,6 +367,17 @@ export const GraficoCerealEntregado = () => {
     //     { "cosecha": "2021", "Entregadas": "0", "Encuesta": "4800" }
     // ]
 
+    const allData = activeKey === '1' ? isDataTotal :
+        activeKey === '2' ? isDataSoja :
+            activeKey === '3' ? isDataTrigo :
+                activeKey === '4' ? isDataMaiz :
+                    isDataOtrosGranos;
+
+    const barDataMax = Math.max(...allData.map(item => item.Entregadas));
+    const lineDataMax = Math.max(...allData.map(item => item.Encuesta));
+    const combinedMax = Math.max(barDataMax, lineDataMax);
+
+
 
     return (
         <>
@@ -415,17 +416,11 @@ export const GraficoCerealEntregado = () => {
 
                 {
                     isLoading > 0 ? <Spin className='prueba' tip="Loading" size="large" style={{ borderColor: 'red' }} > <div className="SpinLoading" /> </Spin> :
-                        <ResponsiveContainer>
+                        <ResponsiveContainer >
                             <ComposedChart
                                 width={500}
                                 height={250}
                                 data={
-                                    // activeKey === '1' ? total : //isDataTotal
-                                    //     activeKey === '2' ? soja : total //isDataSoja : isDataTotal
-                                    // activeKey === '3' ? isDataTrigo : 
-                                    // activeKey === '4' ? isDataMaiz : 
-                                    // isDataOtrosGranos
-                                    // total
                                     activeKey === '1' ? isDataTotal :
                                         activeKey === '2' ? isDataSoja :
                                             activeKey === '3' ? isDataTrigo :
@@ -441,7 +436,8 @@ export const GraficoCerealEntregado = () => {
                             >
                                 <CartesianGrid vertical={false} horizontal={true} />
                                 <XAxis dataKey="cosecha" tick={() => null} />
-                                <YAxis tick={{ fontSize: 11 }} label={{ value: 'TT', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} />
+                                {/* <YAxis tick={{ fontSize: 11 }} label={{ value: 'TT', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} /> */}
+                                <YAxis domain={[0, combinedMax]} tick={{ fontSize: 11 }} label={{ value: 'TT', angle: -90, position: 'insideLeft', offset: -5, fontSize: "13px" }} />
                                 <Tooltip
                                 // content={CustomTooltip}
                                 />
@@ -449,7 +445,7 @@ export const GraficoCerealEntregado = () => {
                                     onClick={(x) => handleLegendClick(x)}
                                 />
                                 {isValorEntregadas ? (
-                                    <Bar dataKey='Entregadas' name="TT Entregadas" barSize={50} fill="#8fd14a" legendType='circle'>
+                                    <Bar dataKey='Entregadas' name="TT Entregadas" barSize={50} fill="#A2E270" legendType='circle'>
                                         <LabelList dataKey="cosecha" position="bottom" fontSize={13} />
                                         <LabelList dataKey="Porcentaje" position="bottom" dy={13} fontSize={13} />
                                     </Bar>
@@ -460,7 +456,7 @@ export const GraficoCerealEntregado = () => {
                                     </Bar>
                                 )}
                                 {isValorEncuesta ? (
-                                    <Line type="monotone" name="TT Encuesta" dataKey='Encuesta' stroke="#00b33b" strokeWidth={2} />
+                                    <Line type="monotone" name="TT Encuesta" dataKey='Encuesta' stroke="#0B780F" strokeWidth={2} />
                                 ) : (
                                     <Line type="monotone" name="TT Encuesta" dataKey={0} stroke="#d8d8d8" strokeWidth={2} />
                                 )}

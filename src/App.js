@@ -19,6 +19,7 @@ function App() {
 
   const idC = localStorage.getItem("cliente"); //Probando
   const [idCliente, setIdCliente]=useState(idC); //Probando
+  // const [idCliente, setIdCliente]=useState(2049); //Probando
 
 
   return (
